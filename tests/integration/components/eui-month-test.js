@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
-import MonthPageObject from 'eui-calendar/tests/page-object';
+import MonthPageObject from 'eui-calendar/tests/month-page-object';
 
 moduleForComponent('eui-month', 'Integration | Component | eui month', {
   integration: true,
@@ -10,15 +10,12 @@ moduleForComponent('eui-month', 'Integration | Component | eui month', {
   }
 });
 
-
-
 test('default behavior', function(assert) {
   this.set('month', moment('August 2015'));
   this.render(hbs`{{eui-month month=month}}`);
 
-  assert.equal(this.component.daysCount(), 31, 'Number of days in August 2015');
-  assert.equal(this.component.slotCount(), 42, 'There are 6 weeks');
-  assert.equal(this.component.emptySlotCount(), 11, 'The number of empty slots is 42 - 31');
+  assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
+  assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
   assert.deepEqual(this.component.calendar(), [
      '',    '',   '',   '',   '',  '',   '1',
     '2',   '3',  '4',  '5',  '6',  '7',  '8',
@@ -33,23 +30,17 @@ test('default behavior', function(assert) {
 });
 
 
-
-
-
 test('month yields days into block param with all days', function(assert) {
   this.set('month', moment('August 2015'));
-  this.render(hbs
-    `{{#eui-month month=month as |day|}}
-        <li class="eui-month--slot {{if (moment-same-month month day) 'eui-month--day' 'eui-month--disabled'}}">
-          {{moment-format day 'D'}}
-        </li>
-     {{/eui-month}}
-    `
-  );
-  assert.equal(this.component.daysCount(), 31, 'Number of days in August 2015');
-  assert.equal(this.component.slotCount(), 42, 'There are 6 weeks');
-  assert.equal(this.component.emptySlotCount(), 0, 'There are zero empty slots');
-  assert.equal(this.component.deactivatedSlotCount(), 11, 'There are 11 deactivated slots');
+  this.render(hbs`
+    {{#eui-month month=month as |day|}}
+      {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+    {{/eui-month}}
+  `);
+
+  assert.equal(this.component.notDisabledCount(), 31, 'Number of days in August 2015');
+  assert.equal(this.component.emptyCount(), 0, 'There are zero empty slots');
+  assert.equal(this.component.disabledCount(), 11, 'There are 11 deactivated slots');
   assert.deepEqual(this.component.calendar(), [
     '26',  '27', '28', '29', '30',  '31', '1',
     '2',   '3',  '4',  '5',  '6',  '7',  '8',

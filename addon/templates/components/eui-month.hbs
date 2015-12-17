@@ -8,19 +8,24 @@
   <li class="eui-nameofday">Sat</li>
 </ol>
 
-{{!TODO: rename eui-month--slots}}
-<ol class="eui-month--slots">
+<ol class="eui-month--days">
   {{#each days as |day|}}
     {{#if hasBlock}}
       {{yield day}}
     {{else}}
       {{#if (moment-same-month month day)}}
-        <li class="eui-month--slot {{if (moment-same-month month day) 'eui-month--day' 'eui-month--disabled'}}">
-          {{moment-format day 'D'}}
-        </li>
+        {{eui-day tagName="li" day=day}}
       {{else}}
-      <li class="eui-month--slot eui-month--empty"></li>
+        {{#eui-day tagName="li" day=day is-empty=true}}{{/eui-day}}
       {{/if}}
     {{/if}}
   {{/each}}
 </ol>
+
+{{!-- {{#if (moment-same-month month day)}}
+  <li class="eui-month--slot {{if (moment-same-month month day) 'eui-month--day' 'eui-month--disabled'}}">
+    {{moment-format day 'D'}}
+  </li>
+{{else}}
+<li class="eui-month--slot eui-month--empty"></li>
+{{/if}} --}}
