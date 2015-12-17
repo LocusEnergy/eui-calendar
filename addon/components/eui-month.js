@@ -33,7 +33,8 @@ export default Ember.Component.extend({
     }
 
     return slots;
-  })
+  }),
+
 });
 
 function sortDate(a, b) {

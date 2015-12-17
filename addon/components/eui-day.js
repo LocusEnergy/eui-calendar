@@ -2,6 +2,9 @@ import Ember from 'ember';
 import layout from '../templates/components/eui-day';
 import moment from 'moment';
 
+const { computed } = Ember;
+export const HTML5_DATETIME_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';
+
 export default Ember.Component.extend({
   layout: layout,
   classNames: ['eui-day'],
@@ -10,61 +13,36 @@ export default Ember.Component.extend({
     'is-disabled:eui-day--disabled',
     'is-today:eui-day--today',
     'is-empty:eui-day--empty'],
+  attributeBindings: ['data-datetime'],
 
-  'is-selected': Ember.computed('day', 'selection', {
+  today: computed(function(){
+    return moment();
+  }),
+
+  'is-selected': computed('day', 'selection', {
     get() {
-      let day = this.get('day') || moment();
+      let day = this.get('day');
+      if (day) {
+        return day.isSame(this.get('selection'), 'day');
+      }
+    }
+  }),
 
+  'is-today': computed('day', 'today', {
+    get() {
+      let day = this.get('day');
+      if (day) {
+        return this.get('day').isSame(this.get('today'), 'day');
+      }
+    }
+  }),
 
-      return day.isSame(this.get('selection'));
+  'data-datetime': computed('day', {
+    get() {
+      let day = this.get('day');
+      if (day) {
+        return this.get('day').format(HTML5_DATETIME_FORMAT);
+      }
     }
   })
-
-  // date: null,
-  //
-  // selection: [],
-  // disabledDates: [],
-  // maxPastDate: null,
-  // maxFutureDate: null,
-  //
-  // today: moment(),
-
-  // day: Ember.computed('date', function() {
-  //   return this.get('date').format('D');
-  // }),
-  //
-  // isSelected: Ember.computed('date', 'selection', function() {
-  //   const date = this.get('date');
-  //   const selection = this.get('selection');
-  //
-  //   return selection.find((selection) => {
-  //     return selection.isSame(date, 'day');
-  //   })
-  // }),
-  //
-  // isDisabled: Ember.computed('date', 'disabledDates', 'maxPastDate', 'maxFutureDate', function() {
-  //   const date = this.get('date');
-  //   const disabledDates = this.get('disabledDates') || [];
-  //
-  //   const isDisabledDate = disabledDates.find((disabledDate) => {
-  //     return disabledDate.isSame(date, 'day');
-  //   });
-  //
-  //   if (isDisabledDate) { return true; }
-  //
-  //   const maxPastDate = this.get('maxPastDate');
-  //   const maxFutureDate = this.get('maxFutureDate');
-  //
-  //   if (maxPastDate && date.isBefore(maxPastDate)) {
-  //     return true;
-  //   }
-  //
-  //   if (maxFutureDate && date.isAfter(maxFutureDate)) {
-  //     return true;
-  //   }
-  // }),
-  //
-  // isToday: Ember.computed('date', 'today', function() {
-  //   return this.get('date').isSame(this.get('today'), 'day');
-  // })
 });

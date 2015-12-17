@@ -14,18 +14,19 @@
       {{yield day}}
     {{else}}
       {{#if (moment-same-month month day)}}
-        {{eui-day tagName="li" day=day}}
+        {{eui-day
+          tagName="li"
+          day=day
+          is-selected=(contains-day (get selection '[]') day)
+        }}
       {{else}}
-        {{#eui-day tagName="li" day=day is-empty=true}}{{/eui-day}}
+        {{#eui-day
+          tagName="li"
+          day=day
+          is-empty=true
+          is-selected=(contains-day (get selection '[]') day)
+        }}{{/eui-day}}
       {{/if}}
     {{/if}}
   {{/each}}
 </ol>
-
-{{!-- {{#if (moment-same-month month day)}}
-  <li class="eui-month--slot {{if (moment-same-month month day) 'eui-month--day' 'eui-month--disabled'}}">
-    {{moment-format day 'D'}}
-  </li>
-{{else}}
-<li class="eui-month--slot eui-month--empty"></li>
-{{/if}} --}}

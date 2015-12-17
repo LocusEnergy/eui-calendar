@@ -4,7 +4,23 @@ export default class DayPageObject {
     this.$ = this.env.$;
   }
 
+  dayValue() {
+    return this.$('.eui-day').text().trim();
+  }
+
   isSelected() {
-    return this.$('.eui-month--day').hasClass('.eui-month--selected');
+    return this.$('.eui-day').hasClass('eui-day--selected');
+  }
+
+  isToday() {
+    return this.$('.eui-day').hasClass('eui-day--today');
+  }
+
+  datetime() {
+    return this.$('.eui-day').attr('data-datetime');
+  }
+
+  selectDay() {
+    this.$('.eui-day').click();
   }
 }

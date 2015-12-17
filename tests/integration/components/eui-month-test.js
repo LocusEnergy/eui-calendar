@@ -3,15 +3,16 @@ import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import MonthPageObject from 'eui-calendar/tests/month-page-object';
 
+
 moduleForComponent('eui-month', 'Integration | Component | eui month', {
   integration: true,
   beforeEach() {
+    this.set('month', moment('August 2015'));
     this.component = new MonthPageObject(this);
   }
 });
 
 test('default behavior', function(assert) {
-  this.set('month', moment('August 2015'));
   this.render(hbs`{{eui-month month=month}}`);
 
   assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
@@ -31,7 +32,6 @@ test('default behavior', function(assert) {
 
 
 test('month yields days into block param with all days', function(assert) {
-  this.set('month', moment('August 2015'));
   this.render(hbs`
     {{#eui-month month=month as |day|}}
       {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
@@ -53,6 +53,23 @@ test('month yields days into block param with all days', function(assert) {
     'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
   ], 'headers are present');
 });
+
+test('selection array used to show days as selected', function(assert){
+  const DATE1 = moment('August 1, 2015');
+  const DATE2 = moment('August 5, 2015');
+  this.set('selection', new Ember.A([ DATE1, DATE2 ]));
+  this.render(hbs`{{eui-month month=month selection=selection}}`);
+  assert.ok(this.component.isSelected(DATE1));
+  assert.ok(this.component.isSelected(DATE2));
+  assert.ok(!this.component.isSelected(moment('August 10, 2015')));
+});
+
+
+// build eui-calendar
+
+
+
+
 
 //
 // selectdate - side by side calendars
