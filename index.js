@@ -2,5 +2,8 @@
 'use strict';
 
 module.exports = {
-  name: 'eui-calendar'
+  name: 'eui-calendar',
+  isDevelopingAddon: function() {
+    return true;
+  }
 };

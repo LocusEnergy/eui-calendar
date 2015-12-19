@@ -1,3 +1,9 @@
-<h2 id="title">Welcome to Ember</h2>
+<h4>default eui-month</h4>
 
-{{outlet}}
+{{eui-month month=month selection=selection}}
+
+<h4>eui-month with block params</h4>
+
+{{#eui-month month=month selection=selection as |day|}}
+  {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+{{/eui-month}}
