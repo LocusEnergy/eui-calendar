@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import moment from 'moment';
 import DayPageObject from 'eui-calendar/tests/day-page-object';
 
 moduleForComponent('eui-day', 'Integration | Component | eui day', {
@@ -34,12 +35,12 @@ test('data-datetime attribute', function(assert) {
 });
 
 test('is-selected is false when no day has been defined', function(assert){
-  this.render(hbs`{{eui-day}}`)
+  this.render(hbs`{{eui-day}}`);
   assert.ok(!this.component.isSelected());
 });
 
 test('is-selected is false when no selection has been defined', function(assert){
-  this.render(hbs`{{eui-day day=day}}`)
+  this.render(hbs`{{eui-day day=day}}`);
   assert.ok(!this.component.isSelected());
 });
 

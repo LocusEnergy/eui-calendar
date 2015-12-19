@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/components/eui-day';
 
 export default class MonthPageObject {
@@ -11,7 +12,7 @@ export default class MonthPageObject {
   }
 
   emptyCount() {
-    return this.$('.eui-day--empty').length
+    return this.$('.eui-day--empty').length;
   }
 
   notEmptyCount() {

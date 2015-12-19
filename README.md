@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LocusEnergy/eui-calendar.svg?branch=master)](https://travis-ci.org/LocusEnergy/eui-calendar)
+
 # Eui-calendar
 
 This README outlines the details of collaborating on this Ember addon.

@@ -29,14 +29,10 @@ export default Ember.Component.extend({
     const slots = [];
 
     for (let i = -dayOfWeek; i < DAY_COUNT - dayOfWeek; i++) {
-      slots.push(monthStart.clone().add(i, 'days'))
+      slots.push(monthStart.clone().add(i, 'days'));
     }
 
     return slots;
   }),
 
 });
-
-function sortDate(a, b) {
-  return a.unix() - b.unix();
-}
