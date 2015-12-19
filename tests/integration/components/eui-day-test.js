@@ -2,6 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import DayPageObject from 'eui-calendar/tests/day-page-object';
+import { HTML5_DATETIME_FORMAT } from 'eui-calendar/components/eui-day';
 
 moduleForComponent('eui-day', 'Integration | Component | eui day', {
   integration: true,
@@ -31,7 +32,7 @@ test('default behavior', function(assert) {
 
 test('data-datetime attribute', function(assert) {
   this.render(hbs`{{eui-day day=day}}`);
-  assert.equal(this.component.datetime(), '2015-01-21T08:00:00+00:00');
+  assert.equal(this.component.datetime(), this.get('day').utc().format(HTML5_DATETIME_FORMAT));
 });
 
 test('is-selected is false when no day has been defined', function(assert){
