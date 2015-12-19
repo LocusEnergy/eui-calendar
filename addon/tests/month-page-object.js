@@ -11,7 +11,7 @@ export default class MonthPageObject {
   }
 
   emptyCount() {
-    return this.$('.eui-day--empty').length;
+    return this.$('.eui-day--empty').length
   }
 
   notEmptyCount() {
