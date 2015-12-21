@@ -1,16 +1,17 @@
+{{!-- should these +/- buttons be generic – switch between month / year / decade? --}}
+
 <button {{action 'previousMonth'}}>
   -
 </button>
 
 <button {{action 'monthPicker'}}>
   {{moment-format month 'MMMM'}}
+  {{month-picker month=month}}
 </button>
 
 <button {{action 'nextMonth'}}>
   +
 </button>
-
-{{!-- {{month-picker}} --}}
 
 
 {{#eui-month month=month selection=selection as |day|}}

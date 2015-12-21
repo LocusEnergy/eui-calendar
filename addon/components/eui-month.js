@@ -19,13 +19,13 @@ export default Ember.Component.extend({
   days: computed('month', function() {
     const monthStart = moment(this.get('month')).startOf('month');
     const dayOfWeek = monthStart.day();
-    const slots = [];
+    const days = [];
 
     for (let i = -dayOfWeek; i < DAY_COUNT - dayOfWeek; i++) {
-      slots.push(monthStart.clone().add(i, 'days'));
+      days.push(monthStart.clone().add(i, 'days'));
     }
 
-    return slots;
+    return days;
   }),
 
 });

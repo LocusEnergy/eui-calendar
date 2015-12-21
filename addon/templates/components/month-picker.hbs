@@ -1,3 +1,7 @@
-{{#each year as |month|}}
-  {{month}}
-{{/each}}
+<ol>
+  {{#each months as |month|}}
+    <li class="monthpicker-month">
+      {{moment-format month 'MMMM'}}
+    </li>
+  {{/each}}
+</ol>

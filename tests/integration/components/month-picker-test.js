@@ -8,17 +8,29 @@ moduleForComponent('month-picker', 'Integration | Component | month picker', {
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  this.set('month', moment('August 2015'))
+  this.render(hbs`{{month-picker month=month}}`);
 
-  this.render(hbs`{{month-picker}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#month-picker}}
-      template block text
-    {{/month-picker}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.deepEqual(this.$('.monthpicker-month').map(trimText).toArray(), [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ], 'shows all the months in the year');
 });
+
+// how to test month selection?
+// test to show year?
+
+
+function trimText() {
+  return Ember.$(this).text().trim();
+}
