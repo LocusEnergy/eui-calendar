@@ -66,30 +66,9 @@ test('selection array used to show days as selected', function(assert){
 });
 
 
-// build eui-calendar
 
 
 
-
-
-//
-// selectdate - side by side calendars
-//   month
-//   month
-//
-// // eui-selectdate.hbs
-//
-// {{#if hasBlock}}
-//   {{#eui-month days=month as |day|}}
-//     {{yield day}}
-//   {{/eui-month}}
-//   {{eui-month days=nextMonth as |day|}}
-//     {{yield day}}
-//   {{/eui-month}}
-// {{else}}
-//   {{eui-month days=month}}
-//   {{eui-month days=nextMonth}}
-// {{/if}}
 //
 // calendar
 //   # previous days
@@ -114,14 +93,3 @@ test('selection array used to show days as selected', function(assert){
 //
 // // eui-calendar.hbs
 // {{eui-month days=days}}
-//
-// // eui-month.hbs
-// {{#each as |day|}}
-//   {{#if hasBlock}}
-//     {{yield day}}
-//   {{else}}
-//     {{eui-day
-//
-//     }}
-//   {{/if}}
-// {{/each}}

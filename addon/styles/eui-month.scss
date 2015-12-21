@@ -74,13 +74,12 @@
   }
 
   .eui-day--selected + .eui-day:hover:not(.eui-day--selected) {
-    width: 33px;
-    padding-right: 4px;
-    margin-left: 2px;
+    // width: calc(100% / 7);
+    // padding-right: 4px;
+    // margin-left: 2px;
   }
 
   .eui-day--disabled {
-    pointer-events: none;
     color: #d4d4d4;
   }
 }

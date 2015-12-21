@@ -1,1 +1,24 @@
-{{yield}}
+<button {{action 'previousMonth'}}>
+  -
+</button>
+
+<button {{action 'monthPicker'}}>
+  {{moment-format month 'MMMM'}}
+</button>
+
+<button {{action 'nextMonth'}}>
+  +
+</button>
+
+{{!-- {{month-picker}} --}}
+
+
+{{#eui-month month=month as |day|}}
+  {{#if hasBlock}}
+    {{#eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+      {{yield day}}
+    {{/eui-day}}
+  {{else}}
+    {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+  {{/if}}
+{{/eui-month}}
