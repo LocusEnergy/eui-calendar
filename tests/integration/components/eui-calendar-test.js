@@ -42,9 +42,16 @@ test('yields block param', function(assert) {
   ], 'can pass template block');
 });
 
-// test('can select day by clicking on it', function(assert) {
-//
-// });
+test('can select day by clicking on it', function(assert) {
+  const DATE1 = moment('August 1, 2015');
+  this.render(hbs`{{eui-calendar month=month}}`);
+  this.component.selectDate(DATE1);
+  assert.ok(this.component.isSelected(DATE1));
+
+
+
+
+});
 
 // selecting day in prev/next month switches month appropriately
 

@@ -64,32 +64,3 @@ test('selection array used to show days as selected', function(assert){
   assert.ok(this.component.isSelected(DATE2));
   assert.ok(!this.component.isSelected(moment('August 10, 2015')));
 });
-
-
-
-
-
-//
-// calendar
-//   # previous days
-//   month
-//   # next days
-//
-// month
-//
-// {{#eui-selectdate
-//   selected=selected
-//   as |day|
-// }}
-//   {{day}}
-// {{/eui-selectdate}}
-//
-// {{#eui-calendar
-//   selected=selected
-//   as |day|
-// }}
-//   {{day}}
-// {{/eui-calendar}}
-//
-// // eui-calendar.hbs
-// {{eui-month days=days}}

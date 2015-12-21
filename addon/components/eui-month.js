@@ -6,19 +6,12 @@ const { computed } = Ember;
 const DAY_COUNT = 42;
 
 export default Ember.Component.extend({
-  layout: layout,
+  layout,
   tagName: 'ol',
   classNames: 'eui-month',
 
   month: null,
-  //
-  // selection: [],
-  // disabledDates: [],
-  // maxPastDate: null,
-  // maxFutureDate: null,
-  //
-  // onSelect: null,
-  //
+
   setup: Ember.on('init', function() {
     Ember.assert('You must provide a month to eui-month', this.get('month'));
   }),
