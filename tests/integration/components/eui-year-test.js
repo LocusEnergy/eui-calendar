@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('month-picker', 'Integration | Component | month picker', {
+moduleForComponent('eui-year', 'Integration | Component | eui year', {
   integration: true
 });
 
@@ -9,7 +9,7 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
   this.set('month', moment('August 2015'))
-  this.render(hbs`{{month-picker month=month}}`);
+  this.render(hbs`{{eui-year month=month}}`);
 
   assert.deepEqual(this.$('.monthpicker-month').map(trimText).toArray(), [
     "January",

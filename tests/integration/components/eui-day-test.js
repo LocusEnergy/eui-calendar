@@ -2,7 +2,7 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import DayPageObject from 'eui-calendar/tests/day-page-object';
-import { HTML5_DATETIME_FORMAT } from 'eui-calendar/components/eui-day';
+import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 moduleForComponent('eui-day', 'Integration | Component | eui day', {
   integration: true,

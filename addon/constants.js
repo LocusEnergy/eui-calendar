@@ -1,0 +1,1 @@
+export const HTML5_DATETIME_FORMAT = 'YYYY-MM-DDTHH:mm:ssZ';

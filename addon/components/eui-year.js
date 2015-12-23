@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/month-picker';
+import layout from '../templates/components/eui-year';
 
 export default Ember.Component.extend({
   layout,

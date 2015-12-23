@@ -1,4 +1,4 @@
-import { HTML5_DATETIME_FORMAT } from 'eui-calendar/components/eui-day';
+import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 export default class CalendarPageObject {
   constructor(env) {

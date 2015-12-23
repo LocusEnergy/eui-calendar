@@ -1,25 +1,39 @@
-{{!-- should these +/- buttons be generic – switch between month / year / decade? --}}
 
-<button {{action 'previousMonth'}}>
-  -
-</button>
-
+{{!--
 <button {{action 'monthPicker'}}>
   {{moment-format month 'MMMM'}}
-  {{month-picker month=month}}
-</button>
 
-<button {{action 'nextMonth'}}>
-  +
-</button>
+</button> --}}
 
-
-{{#eui-month month=month selection=selection as |day|}}
-  {{#if hasBlock}}
-    {{#eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
-      {{yield day}}
-    {{/eui-day}}
-  {{else}}
-    {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
-  {{/if}}
-{{/eui-month}}
+{{#if (eq visible 'year-picker')}}
+  {{!-- {{previous-next
+    interval='decade'
+    on-next=(action 'nextDecade')
+    on-previous=(action 'previousDecade')
+  }} --}}
+  {{!-- eui-decade component  --}}
+{{else if (eq visible 'month-picker')}}
+  {{!-- {{previous-next
+    interval='year'
+    on-next=(action 'nextYear')
+    on-previous=(action 'previousYear')
+    on-zoom-out=(action 'showDecade')
+  }} --}}
+  {{!-- {{eui-year year=year selection=month}} --}}
+{{else}}
+  {{!-- {{previous-next
+    interval='month'
+    on-next=(action 'nextMonth')
+    on-previous=(action 'previousMonth')
+    on-zoom-out=(action 'showYear')
+  }} --}}
+  {{#eui-month month=month as |day|}}
+    {{eui-day
+      tagName="li"
+      day=day
+      is-disabled=(not (moment-same-month month day))
+      click=(action (mut selection) day)
+      is-selected=(eq selection day)
+    }}
+  {{/eui-month}}
+{{/if}}

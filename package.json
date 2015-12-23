@@ -39,7 +39,8 @@
     "ember-moment": "4.2.1",
     "ember-resolver": "^2.0.3",
     "ember-truth-helpers": "^1.2.0",
-    "ember-try": "~0.0.8"
+    "ember-try": "~0.0.8",
+    "liquid-fire": "0.22.1"
   },
   "keywords": [
     "ember-addon",
