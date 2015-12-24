@@ -32,10 +32,9 @@ test('default behavior', function(assert) {
 });
 
 test('selection array used to show months as selected', function(assert){
-  const MONTH = moment('August 2015');
+  const MONTH = moment('August 2014');
   this.set('selection', new Ember.A([ MONTH ]));
   this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
-  stop()
   assert.ok(this.component.isSelected(MONTH), 'month is selected');
-  // assert.ok(!this.component.isSelected(moment('March 2015')));
+  assert.ok(!this.component.isSelected(moment('March 2014')));
 });

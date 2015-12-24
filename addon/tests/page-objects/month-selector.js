@@ -17,7 +17,6 @@ export default class MonthSelector {
 
   isSelected(date) {
     let datetime = date.format(HTML5_DATETIME_FORMAT);
-    console.log(this.$(`.eui-month[data-datetime="${datetime}"]`))
     return this.$(`.eui-month[data-datetime="${datetime}"]`).hasClass('eui-month--selected');
   }
 }
