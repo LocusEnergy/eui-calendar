@@ -2,14 +2,14 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 
-import Day from 'eui-calendar/tests/page-objects/day';
+import Interval from 'eui-calendar/tests/page-objects/interval';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 moduleForComponent('eui-day', 'Integration | Component | eui day', {
   integration: true,
   beforeEach() {
     this.set('day', moment('January 21, 2015').utc());
-    this.component = new Day(this);
+    this.component = new Interval(this, 'day');
   }
 });
 
@@ -67,24 +67,24 @@ test('can select day on click', function(assert) {
   assert.ok(this.component.isSelected());
 });
 
-test('today class', function(assert){
+test('is-now class', function(assert){
   this.render(hbs`
     {{eui-day day=day}}
   `);
 
-  assert.ok(!this.component.isToday(), '');
+  assert.ok(!this.component.isNow(), '');
   this.set('day', moment());
-  assert.ok(this.component.isToday());
+  assert.ok(this.component.isNow());
 });
 
-test('recomputes today class if today property changes', function(assert) {
+test('recomputes is-now class if now property changes', function(assert) {
   this.set('day', moment());
   this.set('now', moment().subtract(1, 'day'));
   this.render(hbs`
     {{eui-day day=day now=now}}
   `);
-  assert.ok(!this.component.isToday(), '');
+  assert.ok(!this.component.isNow(), '');
 
   this.set('now', moment());
-  assert.ok(this.component.isToday(), '');
+  assert.ok(this.component.isNow(), '');
 });
