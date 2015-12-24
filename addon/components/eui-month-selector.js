@@ -8,7 +8,9 @@ export default Ember.Component.extend({
   classNames: 'eui-month-selector',
 
   months: Ember.computed('year', function() {
-    let yearStart = moment(this.get('year')).startOf('year');
-    return _range(12).map(m => yearStart.clone().add(m, 'months'));
+    let year = this.get('year').get('year');
+    // ensures that we start with the correct month in the correct year
+    let january = moment().year(year).month(0).startOf('month');
+    return _range(12).map(m => january.clone().add(m, 'months'));
   })
 });
