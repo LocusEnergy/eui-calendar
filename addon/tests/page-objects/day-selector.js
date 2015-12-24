@@ -7,10 +7,6 @@ export default class DaySelector {
     this.$ = this.env.$;
   }
 
-  daysCount() {
-    return this.$('.eui-day').length;
-  }
-
   emptyCount() {
     return this.$('.eui-day--empty').length;
   }
@@ -27,7 +23,7 @@ export default class DaySelector {
     return this.$('.eui-day').not('.eui-day--disabled').length;
   }
 
-  calendar() {
+  days() {
     return this.$('.eui-day').map(trimText).toArray();
   }
 

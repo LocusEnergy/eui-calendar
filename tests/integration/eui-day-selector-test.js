@@ -17,7 +17,7 @@ test('default behavior', function(assert) {
 
   assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
   assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
-  assert.deepEqual(this.component.calendar(), [
+  assert.deepEqual(this.component.days(), [
      '',    '',   '',   '',   '',  '',   '1',
     '2',   '3',  '4',  '5',  '6',  '7',  '8',
     '9',  '10', '11', '12', '13', '14', '15',
@@ -40,7 +40,7 @@ test('month yields days into block param with all days', function(assert) {
   assert.equal(this.component.notDisabledCount(), 31, 'Number of days in August 2015');
   assert.equal(this.component.emptyCount(), 0, 'There are zero empty slots');
   assert.equal(this.component.disabledCount(), 11, 'There are 11 deactivated slots');
-  assert.deepEqual(this.component.calendar(), [
+  assert.deepEqual(this.component.days(), [
     '26',  '27', '28', '29', '30',  '31', '1',
     '2',   '3',  '4',  '5',  '6',  '7',  '8',
     '9',  '10', '11', '12', '13', '14', '15',

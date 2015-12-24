@@ -7,55 +7,22 @@ import MonthSelector from 'eui-calendar/tests/page-objects/month-selector';
 moduleForComponent('eui-month-selector', 'Integration | Component | Selectors | eui month ', {
   integration: true,
   beforeEach() {
-    this.set('month', moment('August 2015'));
+    this.set('year', moment('2015'));
     this.component = new MonthSelector(this);
   }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-
-  this.render(hbs`{{eui-month-selector}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#eui-month-selector}}
-      template block text
-    {{/eui-month-selector}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test('default behavior', function(assert) {
+  this.render(hbs`{{eui-month-selector year=year}}`);
+  assert.equal(this.component.monthCount(), 12, 'number of months in a year');
+  assert.deepEqual(this.component.months(), ['January', 'February'], 'year calendar renders properly');
 });
 
-//
-// test('it renders', function(assert) {
-//   // Set any properties with this.set('myProperty', 'value');
-//   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-//   this.render(hbs`{{eui-year}}`);
-//
-//   assert.deepEqual(this.$('.eui-year--months li').map(trimText).toArray(), [
-//     "January",
-//     "February",
-//     "March",
-//     "April",
-//     "May",
-//     "June",
-//     "July",
-//     "August",
-//     "September",
-//     "October",
-//     "November",
-//     "December"
-//   ], 'shows all the months in the year');
+// test('selection array used to show months as selected', function(assert){
+//   const MONTH = moment('August 2015');
+//   this.set('selection', new Ember.A([ MONTH ]));
+//   this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
+//   assert.ok(true)
+//   // assert.ok(this.component.isSelected(MONTH));
+//   // assert.ok(!this.component.isSelected(moment('March 2015')));
 // });
-//
-// // how to test month selection?
-// // test to show year?
-//
-// function trimText() {
-//   return Ember.$(this).text().trim();
-// }
-//
