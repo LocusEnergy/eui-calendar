@@ -44,7 +44,7 @@
     on-zoom-out=(action 'setInterval')
   }}
 
-    {{#eui-month month=month as |day|}}
+    {{#eui-day-selector month=month as |day|}}
       {{eui-day
         tagName="li"
         day=day
@@ -52,7 +52,7 @@
         click=(action (mut selection) day)
         is-selected=(eq selection day)
       }}
-    {{/eui-month}}
+    {{/eui-day-selector}}
 
   {{/eui-interval-navigator}}
 
