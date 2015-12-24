@@ -7,7 +7,7 @@ import MonthSelector from 'eui-calendar/tests/page-objects/month-selector';
 moduleForComponent('eui-month-selector', 'Integration | Component | Selectors | eui month ', {
   integration: true,
   beforeEach() {
-    this.set('year', moment('2015'));
+    this.set('year', moment('August 2015'));
     this.component = new MonthSelector(this);
   }
 });
@@ -32,9 +32,9 @@ test('default behavior', function(assert) {
 });
 
 test('selection array used to show months as selected', function(assert){
-  const MONTH = moment('August 2014');
+  const MONTH = moment('August 2015');
   this.set('selection', new Ember.A([ MONTH ]));
   this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
   assert.ok(this.component.isSelected(MONTH), 'month is selected');
-  assert.ok(!this.component.isSelected(moment('March 2014')));
+  assert.ok(!this.component.isSelected(moment('March 2015')));
 });
