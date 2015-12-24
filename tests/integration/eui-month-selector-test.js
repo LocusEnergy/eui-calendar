@@ -15,14 +15,27 @@ moduleForComponent('eui-month-selector', 'Integration | Component | Selectors | 
 test('default behavior', function(assert) {
   this.render(hbs`{{eui-month-selector year=year}}`);
   assert.equal(this.component.monthCount(), 12, 'number of months in a year');
-  assert.deepEqual(this.component.months(), ['January', 'February'], 'year calendar renders properly');
+  assert.deepEqual(this.component.months(), [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ], 'year calendar renders properly');
 });
 
-// test('selection array used to show months as selected', function(assert){
-//   const MONTH = moment('August 2015');
-//   this.set('selection', new Ember.A([ MONTH ]));
-//   this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
-//   assert.ok(true)
-//   // assert.ok(this.component.isSelected(MONTH));
-//   // assert.ok(!this.component.isSelected(moment('March 2015')));
-// });
+test('selection array used to show months as selected', function(assert){
+  const MONTH = moment('August 2015');
+  this.set('selection', new Ember.A([ MONTH ]));
+  this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
+  stop()
+  assert.ok(this.component.isSelected(MONTH), 'month is selected');
+  // assert.ok(!this.component.isSelected(moment('March 2015')));
+});

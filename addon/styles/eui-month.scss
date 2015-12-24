@@ -1,8 +1,8 @@
-.eui-month {
+.eui-day-selector {
   padding: 0 5px;
   margin: 0;
 
-  .eui-month--daysofweek {
+  .eui-day-selector--daysofweek {
     list-style: none;
     margin: 0px -5px;
     padding: 0 5px;
@@ -20,7 +20,7 @@
     }
   }
 
-  .eui-month--days {
+  .eui-day-selector--days {
     // width: 259px;
     height: 222px;
     overflow: auto;

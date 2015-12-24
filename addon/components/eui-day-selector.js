@@ -17,9 +17,9 @@ export default Ember.Component.extend({
   },
 
   days: computed('month', function() {
-    const monthStart = moment(this.get('month')).startOf('month');
-    const dayOfWeek = monthStart.day();
-    const dayRange = _range((-1)*dayOfWeek, DAY_COUNT - dayOfWeek);
+    let monthStart = moment(this.get('month')).startOf('month');
+    let dayOfWeek = monthStart.day();
+    let dayRange = _range((-1)*dayOfWeek, DAY_COUNT - dayOfWeek);
     return dayRange.map(d => monthStart.clone().add(d, 'days'));
   }),
 });

@@ -47,10 +47,6 @@ test('can select day by clicking on it', function(assert) {
   this.render(hbs`{{eui-calendar month=month}}`);
   this.component.selectDate(DATE1);
   assert.ok(this.component.isSelected(DATE1));
-
-
-
-
 });
 
 // selecting day in prev/next month switches month appropriately
