@@ -23,24 +23,24 @@ test('default behavior', function(assert) {
   ], 'August 2015 calendar renders properly');
 });
 
-test('yields block param', function(assert) {
-  this.render(hbs`
-    {{#eui-calendar month=month as |day|}}
-      {{#if (moment-same-month month day)}}
-        {{moment-format day 'D'}}
-      {{/if}}
-    {{/eui-calendar}}
-  `);
-
-  assert.deepEqual(this.component.calendar(), [
-    '',    '',   '',   '',   '',  '',   '1',
-    '2',   '3',  '4',  '5',  '6',  '7',  '8',
-    '9',  '10', '11', '12', '13', '14', '15',
-    '16', '17', '18', '19', '20', '21', '22',
-    '23', '24', '25', '26', '27', '28', '29',
-    '30',  '31', '',   '',    '',   '',  ''
-  ], 'can pass template block');
-});
+// test('yields block param', function(assert) {
+//   this.render(hbs`
+//     {{#eui-calendar month=month as |day|}}
+//       {{#if (moment-same-month month day)}}
+//         {{moment-format day 'D'}}
+//       {{/if}}
+//     {{/eui-calendar}}
+//   `);
+//
+//   assert.deepEqual(this.component.calendar(), [
+//     '',    '',   '',   '',   '',  '',   '1',
+//     '2',   '3',  '4',  '5',  '6',  '7',  '8',
+//     '9',  '10', '11', '12', '13', '14', '15',
+//     '16', '17', '18', '19', '20', '21', '22',
+//     '23', '24', '25', '26', '27', '28', '29',
+//     '30',  '31', '',   '',    '',   '',  ''
+//   ], 'can pass template block');
+// });
 
 test('can select day by clicking on it', function(assert) {
   const DATE1 = moment('August 1, 2015');

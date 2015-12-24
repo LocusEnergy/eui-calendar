@@ -1,7 +1,13 @@
-<ol>
+<ol class="eui-year--months">
+
   {{#each months as |month|}}
-    <li class="monthpicker-month">
-      {{moment-format month 'MMMM'}}
+    <li>
+      {{#if hasBlock}}
+        {{yield month}}
+      {{else}}
+        {{moment-format month 'MMMM'}}
+      {{/if}}
     </li>
   {{/each}}
+
 </ol>

@@ -1,14 +1,14 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
-import DayPageObject from 'eui-calendar/tests/day-page-object';
+import Day from 'eui-calendar/tests/page-objects/day';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 moduleForComponent('eui-day', 'Integration | Component | eui day', {
   integration: true,
   beforeEach() {
     this.set('day', moment('January 21, 2015').utc());
-    this.component = new DayPageObject(this);
+    this.component = new Day(this);
   }
 });
 
@@ -78,12 +78,12 @@ test('today class', function(assert){
 
 test('recomputes today class if today property changes', function(assert) {
   this.set('day', moment());
-  this.set('today', moment().subtract(1, 'day'));
+  this.set('now', moment().subtract(1, 'day'));
   this.render(hbs`
-    {{eui-day day=day today=today}}
+    {{eui-day day=day now=now}}
   `);
   assert.ok(!this.component.isToday(), '');
 
-  this.set('today', moment());
+  this.set('now', moment());
   assert.ok(this.component.isToday(), '');
 });

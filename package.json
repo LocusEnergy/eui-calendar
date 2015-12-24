@@ -11,7 +11,7 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "LocusEnergy/eui-calendar",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -36,6 +36,7 @@
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-lodash": "0.0.6",
     "ember-moment": "4.2.1",
     "ember-resolver": "^2.0.3",
     "ember-truth-helpers": "^1.2.0",

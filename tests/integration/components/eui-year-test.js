@@ -5,13 +5,17 @@ moduleForComponent('eui-year', 'Integration | Component | eui year', {
   integration: true
 });
 
+// more accurate to have eui-month as a month
+// rename eui-month => day-selector
+// eui-year => month-selector
+// eui-decade => year-selector
+
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
-  this.set('month', moment('August 2015'))
-  this.render(hbs`{{eui-year month=month}}`);
+  this.render(hbs`{{eui-year}}`);
 
-  assert.deepEqual(this.$('.monthpicker-month').map(trimText).toArray(), [
+  assert.deepEqual(this.$('.eui-year--months li').map(trimText).toArray(), [
     "January",
     "February",
     "March",
@@ -29,7 +33,6 @@ test('it renders', function(assert) {
 
 // how to test month selection?
 // test to show year?
-
 
 function trimText() {
   return Ember.$(this).text().trim();

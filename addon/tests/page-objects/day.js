@@ -13,7 +13,7 @@ export default class DayPageObject {
   }
 
   isToday() {
-    return this.$('.eui-day').hasClass('eui-day--today');
+    return this.$('.eui-day').hasClass('eui-day--now');
   }
 
   datetime() {

@@ -1,32 +1,5 @@
-<ol class="eui-month--daysofweek">
-  <li class="eui-nameofday">Sun</li>
-  <li class="eui-nameofday">Mon</li>
-  <li class="eui-nameofday">Tue</li>
-  <li class="eui-nameofday">Wed</li>
-  <li class="eui-nameofday">Thu</li>
-  <li class="eui-nameofday">Fri</li>
-  <li class="eui-nameofday">Sat</li>
-</ol>
-
-<ol class="eui-month--days">
-  {{#each days as |day|}}
-    {{#if hasBlock}}
-      {{yield day}}
-    {{else}}
-      {{#if (moment-same-month month day)}}
-        {{eui-day
-          tagName="li"
-          day=day
-          is-selected=(contains-day (get selection '[]') day)
-        }}
-      {{else}}
-        {{#eui-day
-          tagName="li"
-          day=day
-          is-empty=true
-          is-selected=(contains-day (get selection '[]') day)
-        }}{{/eui-day}}
-      {{/if}}
-    {{/if}}
-  {{/each}}
-</ol>
+{{#if hasBlock}}
+  {{yield month}}
+{{else}}
+  {{moment-format month 'MMMM'}}
+{{/if}}
