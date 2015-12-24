@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 import { HTML5_DATETIME_FORMAT } from '../constants';
 
 const { computed } = Ember;

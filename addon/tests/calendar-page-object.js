@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 export default class CalendarPageObject {

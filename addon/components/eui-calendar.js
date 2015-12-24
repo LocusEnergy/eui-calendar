@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   layout,
 
   actions: {
-    setInterval(interval) {
+    setInterval() {
 
     },
 
