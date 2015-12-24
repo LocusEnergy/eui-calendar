@@ -1,1 +1,13 @@
-{{yield}}
+<ol class="eui-year--months">
+
+  {{#each months as |month|}}
+    <li>
+      {{#if hasBlock}}
+        {{yield month}}
+      {{else}}
+        {{moment-format month 'MMMM'}}
+      {{/if}}
+    </li>
+  {{/each}}
+
+</ol>

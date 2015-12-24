@@ -62,9 +62,9 @@ test('can select month on click', function(assert) {
     click=(action 'selectMonth' month)
   }}`);
 
-  assert.ok(!this.component.isSelected());
+  assert.ok(!this.component.isSelected(), 'is not initially selected');
   this.component.selectMonth();
-  assert.ok(this.component.isSelected());
+  assert.ok(this.component.isSelected(), 'is selected after click');
 });
 
 test('is-now class', function(assert){
@@ -72,9 +72,9 @@ test('is-now class', function(assert){
     {{eui-month month=month}}
   `);
 
-  assert.ok(!this.component.isNow(), '');
+  assert.ok(!this.component.isNow(), 'is not now');
   this.set('month', moment());
-  assert.ok(this.component.isNow());
+  assert.ok(this.component.isNow(), 'is now');
 });
 
 test('recomputes is-now class if now property changes', function(assert) {
@@ -83,8 +83,8 @@ test('recomputes is-now class if now property changes', function(assert) {
   this.render(hbs`
     {{eui-month month=month now=now}}
   `);
-  assert.ok(!this.component.isNow(), '');
+  assert.ok(!this.component.isNow(), 'is not now');
 
   this.set('now', moment());
-  assert.ok(this.component.isNow(), '');
+  assert.ok(this.component.isNow(), 'is now after setting now property');
 });
