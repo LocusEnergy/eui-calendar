@@ -1,66 +1,90 @@
-import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
-import MonthPageObject from 'eui-calendar/tests/month-page-object';
 
+import Month from 'eui-calendar/tests/page-objects/month';
+import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 moduleForComponent('eui-month', 'Integration | Component | eui month', {
   integration: true,
   beforeEach() {
     this.set('month', moment('August 2015'));
-    this.component = new MonthPageObject(this);
+    this.component = new Month(this);
   }
 });
 
 test('default behavior', function(assert) {
-  this.render(hbs`{{eui-month month=month}}`);
-
-  assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
-  assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
-  assert.deepEqual(this.component.calendar(), [
-     '',    '',   '',   '',   '',  '',   '1',
-    '2',   '3',  '4',  '5',  '6',  '7',  '8',
-    '9',  '10', '11', '12', '13', '14', '15',
-    '16', '17', '18', '19', '20', '21', '22',
-    '23', '24', '25', '26', '27', '28', '29',
-    '30',  '31', '',   '',    '',   '',  ''
-  ], 'August 2015 calendar renders properly');
-  assert.deepEqual(this.component.headers(), 	[
-    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
-  ], 'headers are present');
-});
-
-
-test('month yields days into block param with all days', function(assert) {
   this.render(hbs`
-    {{#eui-month month=month as |day|}}
-      {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+    {{eui-month month=month}}
+  `);
+
+  assert.equal(this.component.monthValue(), 'August', 'renders date');
+  this.render(hbs`
+    {{#eui-month
+      month=month
+      as |month|
+    }}
+      [{{moment-format month 'MMMM'}}]
     {{/eui-month}}
   `);
 
-  assert.equal(this.component.notDisabledCount(), 31, 'Number of days in August 2015');
-  assert.equal(this.component.emptyCount(), 0, 'There are zero empty slots');
-  assert.equal(this.component.disabledCount(), 11, 'There are 11 deactivated slots');
-  assert.deepEqual(this.component.calendar(), [
-    '26',  '27', '28', '29', '30',  '31', '1',
-    '2',   '3',  '4',  '5',  '6',  '7',  '8',
-    '9',  '10', '11', '12', '13', '14', '15',
-    '16', '17', '18', '19', '20', '21', '22',
-    '23', '24', '25', '26', '27', '28', '29',
-    '30',  '31', '1',  '2',  '3',  '4',  '5'
-  ], 'August 2015 calendar renders properly');
-  assert.deepEqual(this.component.headers(), 	[
-    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'
-  ], 'headers are present');
+  assert.equal(this.$().text().trim(), '[August]', 'block parameter works');
 });
 
-test('selection array used to show days as selected', function(assert){
-  const DATE1 = moment('August 1, 2015');
-  const DATE2 = moment('August 5, 2015');
-  this.set('selection', new Ember.A([ DATE1, DATE2 ]));
-  this.render(hbs`{{eui-month month=month selection=selection}}`);
-  assert.ok(this.component.isSelected(DATE1));
-  assert.ok(this.component.isSelected(DATE2));
-  assert.ok(!this.component.isSelected(moment('August 10, 2015')));
+test('data-datetime attribute', function(assert) {
+  this.render(hbs`{{eui-month month=month}}`);
+  assert.equal(this.component.datetime(), this.get('month').format(HTML5_DATETIME_FORMAT));
 });
+
+test('is-selected is false when no day has been defined', function(assert){
+  this.render(hbs`{{eui-month}}`);
+  assert.ok(!this.component.isSelected());
+});
+
+// test('is-selected is false when no selection has been defined', function(assert){
+//   this.render(hbs`{{eui-day day=day}}`);
+//   assert.ok(!this.component.isSelected());
+// });
+//
+// test('is-selected is true when selection and day have been defined', function(assert){
+//   this.render(hbs`{{eui-day day=day selection=day}}`);
+//   assert.ok(this.component.isSelected());
+// });
+//
+// test('can select day on click', function(assert) {
+//   this.on('selectDay', (day) => {
+//     this.set('selection', day);
+//   });
+//
+//   this.render(hbs`{{eui-day
+//     day=day
+//     selection=selection
+//     click=(action 'selectDay' day)
+//   }}`);
+//
+//   assert.ok(!this.component.isSelected());
+//   this.component.selectDay();
+//   assert.ok(this.component.isSelected());
+// });
+//
+// test('today class', function(assert){
+//   this.render(hbs`
+//     {{eui-day day=day}}
+//   `);
+//
+//   assert.ok(!this.component.isToday(), '');
+//   this.set('day', moment());
+//   assert.ok(this.component.isToday());
+// });
+//
+// test('recomputes today class if today property changes', function(assert) {
+//   this.set('day', moment());
+//   this.set('now', moment().subtract(1, 'day'));
+//   this.render(hbs`
+//     {{eui-day day=day now=now}}
+//   `);
+//   assert.ok(!this.component.isToday(), '');
+//
+//   this.set('now', moment());
+//   assert.ok(this.component.isToday(), '');
+// });

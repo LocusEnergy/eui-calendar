@@ -1,6 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
+
 import Day from 'eui-calendar/tests/page-objects/day';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
