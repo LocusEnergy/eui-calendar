@@ -1,11 +1,11 @@
-import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import moment from 'moment';
 
 import Interval from 'eui-calendar/tests/page-objects/interval';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
-moduleForComponent('eui-year', 'Integration | Component | eui year', {
+moduleForComponent('eui-year', 'Integration | Component | Interval | eui year', {
   integration: true,
   beforeEach() {
     this.set('year', moment('2014').utc());

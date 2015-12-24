@@ -5,7 +5,7 @@ import moment from 'moment';
 import Interval from 'eui-calendar/tests/page-objects/interval';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
-moduleForComponent('eui-month', 'Integration | Component | eui month', {
+moduleForComponent('eui-month', 'Integration | Component | Interval | eui month', {
   integration: true,
   beforeEach() {
     this.set('month', moment('August 2015').utc());

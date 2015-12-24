@@ -1,8 +1,15 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import moment from 'moment';
+import MonthSelector from 'eui-calendar/tests/page-objects/month-selector';
 
-moduleForComponent('eui-month-selector', 'Integration | Component | eui month selector', {
-  integration: true
+
+moduleForComponent('eui-month-selector', 'Integration | Component | Selectors | eui month ', {
+  integration: true,
+  beforeEach() {
+    this.set('month', moment('August 2015'));
+    this.component = new MonthSelector(this);
+  }
 });
 
 test('it renders', function(assert) {

@@ -5,7 +5,7 @@ import moment from 'moment';
 import Interval from 'eui-calendar/tests/page-objects/interval';
 import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
-moduleForComponent('eui-day', 'Integration | Component | eui day', {
+moduleForComponent('eui-day', 'Integration | Component | Interval | eui day', {
   integration: true,
   beforeEach() {
     this.set('day', moment('January 21, 2015').utc());

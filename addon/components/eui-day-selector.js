@@ -8,7 +8,7 @@ const DAY_COUNT = 42;
 
 export default Ember.Component.extend({
   layout,
-  classNames: 'eui-month',
+  classNames: 'eui-day-selector',
   month: null,
 
   init() {

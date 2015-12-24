@@ -4,7 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import DaySelector from 'eui-calendar/tests/page-objects/day-selector';
 
-moduleForComponent('eui-day-selector', 'Integration | Component | eui day selector', {
+moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eui day', {
   integration: true,
   beforeEach() {
     this.set('month', moment('August 2015'));

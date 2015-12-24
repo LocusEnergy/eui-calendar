@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import _merge from 'lodash/object/merge';
 
 export default class Interval {
   constructor(env, interval) {
@@ -7,30 +6,18 @@ export default class Interval {
     this.$ = this.env.$;
     let className = `eui-${interval}`;
 
-    _merge(this, {
-      ['selector']() {
-        return this.$(`.${className}`);
-      },
+    this['selector'] = () => this.$(`.${className}`);
 
-      [`${interval}Value`]() {
-        return this.selector().text().trim();
-      },
+    this[`${interval}Value`] = () => this.selector().text().trim();
 
-      ['datetime']() {
-        return this.selector().attr('data-datetime');
-      },
+    this[`${interval}Value`] = () => this.selector().text().trim();
 
-      ['isSelected']() {
-        return this.selector().hasClass(`${className}--selected`);
-      },
+    this['datetime'] = () => this.selector().attr('data-datetime');
 
-      ['isNow']() {
-        return this.selector().hasClass(`${className}--now`);
-      },
+    this['isSelected'] = () => this.selector().hasClass(`${className}--selected`);
 
-      [`select${Ember.String.capitalize(interval)}`]() {
-        return this.selector().click();
-      }
-    });
+    this['isNow'] = () => this.selector().hasClass(`${className}--now`);
+
+    this[`select${Ember.String.capitalize(interval)}`] = () => this.selector().click();
   }
 }

@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('eui-year-selector', 'Integration | Component | eui year selector', {
+moduleForComponent('eui-year-selector', 'Integration | Component | Selectors | eui year', {
   integration: true
 });
 
