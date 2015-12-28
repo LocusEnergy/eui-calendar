@@ -33,7 +33,6 @@ test('default behavior', function(assert) {
 
 test('data-datetime attribute', function(assert) {
   this.render(hbs`{{eui-day day=day}}`);
-  stop()
   assert.equal(this.component.datetime(), this.get('day').utc().format(HTML5_DATETIME_FORMAT));
 });
 

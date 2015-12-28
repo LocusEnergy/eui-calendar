@@ -1,5 +1,6 @@
-{{#if hasBlock}}
-  {{yield year}}
-{{else}}
-  {{moment-format year 'YYYY'}}
-{{/if}}
+{{eui-interval
+  interval=day
+  interval-type='year'
+  format='YYYY'
+  is-selected=is-selected
+}}
