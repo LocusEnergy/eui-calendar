@@ -52,16 +52,16 @@
     }
   }
 
-  .eui-day--now {
+  .eui-day .--is-now {
     font-weight: bold;
     color: #f00000 !important;
 
-    &.eui-day--selected {
+    &.eui-day .--is-selected {
       color: #fffebc !important;
     }
   }
 
-  .eui-day--selected {
+  .eui-day .--is-selected {
     background-image: linear-gradient(to bottom, #1493dc 0%, #64bcf7 100%);
     color: #ffffff;
     text-shadow: 0px 1px rgba(0,0,0,0.35);
@@ -79,7 +79,7 @@
     // margin-left: 2px;
   }
 
-  .eui-day--disabled {
+  .eui-day .--is-disabled {
     color: #d4d4d4;
   }
 }

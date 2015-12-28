@@ -1,40 +1,36 @@
 {{#liquid-if (eq visible 'year-picker')}}
 
   {{eui-interval-navigator
-    interval='decade'
     on-next=(action 'nextInterval')
     on-previous=(action 'previousInterval')
   }}
 
-  {{#eui-decade decade=decade as |year|}}
+  {{#eui-year-selector years=years as |year|}}
     {{eui-year
       tagName="li"
       year=year
-      is-disabled=(not (moment-same-decade decade year))
       click=(action (mut selection) year)
       is-selected=(eq selection year)
     }}
-  {{/eui-decade}}
+  {{/eui-year-selector}}
 
 
 {{else if (eq visible 'month-picker')}}
 
   {{eui-interval-navigator
-    interval='year'
     on-next=(action 'nextInterval')
     on-previous=(action 'previousInterval')
     on-zoom-out=(action 'setInterval')
   }}
 
-  {{#eui-year year=year as |month|}}
+  {{#eui-month-selector year=year as |month|}}
     {{eui-month
       tagName="li"
       month=month
-      is-disabled=(not (moment-same-year year month))
       click=(action (mut selection) month)
       is-selected=(eq selection month)
     }}
-  {{/eui-year}}
+  {{/eui-month-selector}}
 
 {{else}}
 

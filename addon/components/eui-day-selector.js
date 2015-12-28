@@ -9,12 +9,6 @@ const DAY_COUNT = 42;
 export default Ember.Component.extend({
   layout,
   classNames: 'eui-day-selector',
-  month: null,
-
-  init() {
-    this._super(...arguments);
-    Ember.assert('You must provide a month to eui-month', this.get('month'));
-  },
 
   days: computed('month', function() {
     let monthStart = moment(this.get('month')).startOf('month');

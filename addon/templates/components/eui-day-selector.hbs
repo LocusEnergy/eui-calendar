@@ -8,6 +8,12 @@
   <li class="eui-nameofday">Sat</li>
 </ol>
 
+{{!-- <ol>
+  {{#each days as |day|}}
+    {{eui-interval type='day' interval=day}}
+  {{/each}}
+</ol> --}}
+
 <ol class="eui-day-selector--days">
   {{#each days as |day|}}
     {{#if hasBlock}}

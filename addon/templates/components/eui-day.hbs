@@ -1,5 +1,13 @@
-{{#if hasBlock}}
+{{eui-interval
+  interval=day
+  interval-type='day'
+  format='D'
+  is-selected=is-selected
+  is-disabled=is-disabled
+}}
+
+{{!-- {{#if hasBlock}}
   {{yield day}}
 {{else}}
   {{moment-format day 'D'}}
-{{/if}}
+{{/if}} --}}
