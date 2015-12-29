@@ -8,30 +8,26 @@
   <li class="eui-nameofday">Sat</li>
 </ol>
 
-{{!-- <ol>
-  {{#each days as |day|}}
-    {{eui-interval type='day' interval=day}}
-  {{/each}}
-</ol> --}}
-
 <ol class="eui-day-selector--days">
   {{#each days as |day|}}
     {{#if hasBlock}}
       {{yield day}}
     {{else}}
       {{#if (moment-same-month month day)}}
-        {{eui-day
+        {{eui-interval
           tagName="li"
-          day=day
+          moment=day
+          interval='day'
           is-selected=(contains-day (get selection '[]') day)
         }}
       {{else}}
-        {{#eui-day
+        {{#eui-interval
           tagName="li"
-          day=day
+          moment=day
+          interval='day'
           is-empty=true
           is-selected=(contains-day (get selection '[]') day)
-        }}{{/eui-day}}
+        }}{{/eui-interval}}
       {{/if}}
     {{/if}}
   {{/each}}

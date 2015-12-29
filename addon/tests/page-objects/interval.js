@@ -1,23 +1,32 @@
 import Ember from 'ember';
 
 export default class Interval {
-  constructor(env, interval) {
+  constructor(env) {
     this.env = env;
     this.$ = this.env.$;
-    let className = `eui-${interval}`;
+  }
 
-    this['selector'] = () => this.$(`.${className}`);
+  selector() {
+    return this.$('.eui-interval');
+  }
 
-    this[`${interval}Value`] = () => this.selector().text().trim();
+  value() {
+    return this.selector().text().trim();
+  }
 
-    this[`${interval}Value`] = () => this.selector().text().trim();
+  datetime() {
+    return this.selector().attr('data-datetime');
+  }
 
-    this['datetime'] = () => this.selector().attr('data-datetime');
+  isSelected() {
+    return this.selector().hasClass('--is-selected');
+  }
 
-    this['isSelected'] = () => this.selector().hasClass(`${className}--selected`);
+  isNow() {
+    return this.selector().hasClass('--is-now');
+  }
 
-    this['isNow'] = () => this.selector().hasClass(`${className}--now`);
-
-    this[`select${Ember.String.capitalize(interval)}`] = () => this.selector().click();
+  selectMoment() {
+    this.selector().click();
   }
 }
