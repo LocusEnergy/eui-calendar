@@ -1,3 +1,44 @@
+{{#liquid-if (eq intervalSelector 'years')}}
+
+  {{eui-interval-selector
+    interval='year'
+    on-select=(action 'selectMonths')
+  }}
+
+{{else if (eq intervalSelector 'months')}}
+
+  {{eui-interval-selector
+    interval='month'
+    on-select=(action 'selectDays')
+    zoom-out=(action 'selectYears')
+  }}
+
+{{else}}
+
+  {{eui-interval-selector
+    interval='day'
+    selected=selected
+    zoom-out=(action 'selectMonths')
+  }}
+
+{{/liquid-if}}
+
+
+
+
+
+
+
+
+
+
+
+{{!--
+
+
+
+
+
 {{#liquid-if (eq visible 'year-picker')}}
 
   {{eui-interval-navigator
@@ -40,11 +81,18 @@
     on-zoom-out=(action 'setInterval')
   }}
 
+    {{eui-interval-selector
+      interval='day'
+      selected=selected
+      on-zoom-out=(action 'show-month-selector')
+    }}
+
     {{#eui-day-selector month=month as |day|}}
       {{eui-interval
         tagName="li"
         moment=day
         interval='day'
+        classNames='eui-day'
         is-disabled=(not (moment-same-month month day))
         click=(action (mut selection) day)
         is-selected=(eq selection day)
@@ -53,4 +101,4 @@
 
   {{/eui-interval-navigator}}
 
-{{/liquid-if}}
+{{/liquid-if}} --}}

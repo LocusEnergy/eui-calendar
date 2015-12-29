@@ -1,22 +1,24 @@
 import Ember from 'ember';
 import layout from '../templates/components/eui-calendar';
+import Moment from 'moment';
 
 export default Ember.Component.extend({
   layout,
+  intervalSelector: 'days',
+  moment: Moment(),
 
   actions: {
-    setInterval() {
-
+    selectDays() {
+      this.set('intervalSelector', 'days');
     },
 
-    previousInterval() {
-
+    selectMonths() {
+      this.set('intervalSelector', 'months');
     },
 
-    nextInterval() {
-
+    selectYears() {
+      this.set('intervalSelector', 'years');
     }
-
   }
 });
 

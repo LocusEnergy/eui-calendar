@@ -1,0 +1,35 @@
+<button {{action 'previous'}}>
+ -
+</button>
+
+<button {{action 'zoom-out'}}>
+  {{moment-format selected format}}
+</button>
+
+<button {{action 'next'}}>
+  +
+</button>
+
+
+{{#if (eq interval 'day')}}
+  <ol>
+    <li class="eui-nameofday">Sun</li>
+    <li class="eui-nameofday">Mon</li>
+    <li class="eui-nameofday">Tue</li>
+    <li class="eui-nameofday">Wed</li>
+    <li class="eui-nameofday">Thu</li>
+    <li class="eui-nameofday">Fri</li>
+    <li class="eui-nameofday">Sat</li>
+  </ol>
+{{/if}}
+
+<ol>
+  {{#each moments as |moment|}}
+    {{eui-interval
+      moment=moment
+      interval=interval
+      on-select=(action (neq interval 'day'))
+      is-selected=(contains-moment (get selection '[]') moment interval)
+    }}
+  {{/each}}
+</ol>
