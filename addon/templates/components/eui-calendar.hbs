@@ -1,14 +1,19 @@
+{{!-- {{eui-calendar selected=selected}} --}}
+
 {{#liquid-if (eq intervalSelector 'years')}}
 
   {{eui-interval-selector
     interval='year'
+    momentRange=yearRange
     on-select=(action 'selectMonths')
+    zoom-out=(action 'nullAction')
   }}
 
 {{else if (eq intervalSelector 'months')}}
 
   {{eui-interval-selector
     interval='month'
+    momentRange=monthRange
     on-select=(action 'selectDays')
     zoom-out=(action 'selectYears')
   }}
@@ -17,88 +22,10 @@
 
   {{eui-interval-selector
     interval='day'
+    momentRange=dayRange
     selected=selected
+    on-select=(action 'nullAction')
     zoom-out=(action 'selectMonths')
   }}
 
 {{/liquid-if}}
-
-
-
-
-
-
-
-
-
-
-
-{{!--
-
-
-
-
-
-{{#liquid-if (eq visible 'year-picker')}}
-
-  {{eui-interval-navigator
-    on-next=(action 'nextInterval')
-    on-previous=(action 'previousInterval')
-  }}
-
-  {{#eui-year-selector years=years as |year|}}
-    {{eui-year
-      tagName="li"
-      year=year
-      click=(action (mut selection) year)
-      is-selected=(eq selection year)
-    }}
-  {{/eui-year-selector}}
-
-
-{{else if (eq visible 'month-picker')}}
-
-  {{eui-interval-navigator
-    on-next=(action 'nextInterval')
-    on-previous=(action 'previousInterval')
-    on-zoom-out=(action 'setInterval')
-  }}
-
-  {{#eui-month-selector year=year as |month|}}
-    {{eui-month
-      tagName="li"
-      month=month
-      click=(action (mut selection) month)
-      is-selected=(eq selection month)
-    }}
-  {{/eui-month-selector}}
-
-{{else}}
-
-  {{#eui-interval-navigator
-    on-next=(action 'nextInterval')
-    on-previous=(action 'previousInterval')
-    on-zoom-out=(action 'setInterval')
-  }}
-
-    {{eui-interval-selector
-      interval='day'
-      selected=selected
-      on-zoom-out=(action 'show-month-selector')
-    }}
-
-    {{#eui-day-selector month=month as |day|}}
-      {{eui-interval
-        tagName="li"
-        moment=day
-        interval='day'
-        classNames='eui-day'
-        is-disabled=(not (moment-same-month month day))
-        click=(action (mut selection) day)
-        is-selected=(eq selection day)
-      }}
-    {{/eui-day-selector}}
-
-  {{/eui-interval-navigator}}
-
-{{/liquid-if}} --}}
