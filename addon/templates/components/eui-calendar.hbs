@@ -41,9 +41,10 @@
   }}
 
     {{#eui-day-selector month=month as |day|}}
-      {{eui-day
+      {{eui-interval
         tagName="li"
-        day=day
+        moment=day
+        interval='day'
         is-disabled=(not (moment-same-month month day))
         click=(action (mut selection) day)
         is-selected=(eq selection day)
