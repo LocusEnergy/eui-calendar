@@ -1,10 +1,11 @@
-{{!-- {{eui-calendar selected=selected}} --}}
+{{!-- {{eui-calendar selection=selection}} --}}
 
 {{#liquid-if (eq intervalSelector 'years')}}
 
   {{eui-interval-selector
     interval='year'
     momentRange=yearRange
+    selection=selection
     on-select=(action 'selectMonths')
     zoom-out=(action 'nullAction')
   }}
@@ -14,6 +15,7 @@
   {{eui-interval-selector
     interval='month'
     momentRange=monthRange
+    selection=selection
     on-select=(action 'selectDays')
     zoom-out=(action 'selectYears')
   }}
@@ -23,9 +25,21 @@
   {{eui-interval-selector
     interval='day'
     momentRange=dayRange
-    selected=selected
-    on-select=(action 'nullAction')
+    selection=selection
+    on-select=(action 'selectMoment')
     zoom-out=(action 'selectMonths')
   }}
 
 {{/liquid-if}}
+
+{{!-- {{#eui-day-selector month=month as |day|}}
+  {{eui-interval
+    tagName="li"
+    moment=day
+    interval='day'
+    classNames='eui-day'
+    is-disabled=(not (moment-same-month month day))
+    click=(action (mut selection) day)
+    is-selected=(eq selection day)
+  }}
+{{/eui-day-selector}} --}}

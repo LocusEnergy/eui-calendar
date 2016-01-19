@@ -3,12 +3,13 @@
 </button>
 
 <button {{action zoom-out}}>
-  {{#if (eq interval 'year')}}
-    {{log momentRange}}
-    {{moment-format (get range 'firstObject') 'YYYY'}}
+  {{#if (eq interval 'day')}}
+    {{moment-format selection 'MMMM'}}
+  {{else if (eq interval 'month')}}
+    {{moment-format selection 'YYYY'}}
+  {{else if (eq interval 'year')}}
+    {{decade-range momentRange}}
   {{/if}}
-  {{!-- if decade selector -- needs to show date range --}}
-  {{moment-format selected format}}
 </button>
 
 <button {{action 'next'}}>
@@ -33,8 +34,11 @@
     {{eui-interval
       moment=moment
       interval=interval
-      click=(action on-select interval)
-      is-selected=(contains-moment (get selection '[]') moment interval)
+      click=(action (mut selection) moment)
+      is-selected=(eq selection moment)
     }}
   {{/each}}
 </ol>
+
+
+{{!-- is-selected=(contains-moment (get selection '[]') moment interval) --}}

@@ -4,7 +4,7 @@ import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import DaySelector from 'eui-calendar/tests/page-objects/day-selector';
 
-moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eui day', {
+moduleForComponent('eui-interval-selector', 'Integration | Component | Selectors | eui day', {
   integration: true,
   beforeEach() {
     this.set('month', moment('August 2015'));
@@ -12,8 +12,8 @@ moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eu
   }
 });
 
-test('default behavior', function(assert) {
-  this.render(hbs`{{eui-day-selector month=month}}`);
+only('default behavior', function(assert) {
+  this.render(hbs`{{eui-interval-selector interval='day'}}`);
 
   assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
   assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
