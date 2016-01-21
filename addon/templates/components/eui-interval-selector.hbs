@@ -2,7 +2,7 @@
  -
 </button>
 
-<button {{action zoom-out}}>
+{{!-- <button {{action 'zoomOut'}}>
   {{#if (eq interval 'day')}}
     {{moment-format selection 'MMMM'}}
   {{else if (eq interval 'month')}}
@@ -10,35 +10,14 @@
   {{else if (eq interval 'year')}}
     {{decade-range momentRange}}
   {{/if}}
-</button>
+</button> --}}
 
 <button {{action 'next'}}>
   +
 </button>
 
 
-{{#if (eq interval 'day')}}
-  <ol>
-    <li class="eui-nameofday">Sun</li>
-    <li class="eui-nameofday">Mon</li>
-    <li class="eui-nameofday">Tue</li>
-    <li class="eui-nameofday">Wed</li>
-    <li class="eui-nameofday">Thu</li>
-    <li class="eui-nameofday">Fri</li>
-    <li class="eui-nameofday">Sat</li>
-  </ol>
-{{/if}}
-
-<ol>
-  {{#each momentRange as |moment|}}
-    {{eui-interval
-      moment=moment
-      interval=interval
-      click=(action (mut selection) moment)
-      is-selected=(eq selection moment)
-    }}
-  {{/each}}
-</ol>
+{{!-- the given selector will go here --}}
 
 
 {{!-- is-selected=(contains-moment (get selection '[]') moment interval) --}}

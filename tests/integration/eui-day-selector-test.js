@@ -1,10 +1,10 @@
 import Ember from 'ember';
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, only } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import DaySelector from 'eui-calendar/tests/page-objects/day-selector';
 
-moduleForComponent('eui-interval-selector', 'Integration | Component | Selectors | eui day', {
+moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eui day', {
   integration: true,
   beforeEach() {
     this.set('month', moment('August 2015'));
@@ -12,8 +12,8 @@ moduleForComponent('eui-interval-selector', 'Integration | Component | Selectors
   }
 });
 
-only('default behavior', function(assert) {
-  this.render(hbs`{{eui-interval-selector interval='day'}}`);
+test('default behavior', function(assert) {
+  this.render(hbs`{{eui-day-selector month=month}}`);
 
   assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
   assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
@@ -33,7 +33,7 @@ only('default behavior', function(assert) {
 test('month yields days into block param with all days', function(assert) {
   this.render(hbs`
     {{#eui-day-selector month=month as |day|}}
-      {{eui-day tagName="li" day=day is-disabled=(not (moment-same-month month day))}}
+      {{eui-interval tagName="li" moment=day interval='day' is-disabled=(not (moment-same-month month day))}}
     {{/eui-day-selector}}
   `);
 
@@ -53,7 +53,7 @@ test('month yields days into block param with all days', function(assert) {
   ], 'headers are present');
 });
 
-test('selection array used to show days as selected', function(assert){
+only('selection array used to show days as selected', function(assert){
   const DATE1 = moment('August 1, 2015');
   const DATE2 = moment('August 5, 2015');
   this.set('selection', new Ember.A([ DATE1, DATE2 ]));

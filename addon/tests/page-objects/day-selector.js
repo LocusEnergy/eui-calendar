@@ -8,23 +8,23 @@ export default class DaySelector {
   }
 
   emptyCount() {
-    return this.$('.eui-day--empty').length;
+    return this.$('.eui-interval.--is-empty').length;
   }
 
   notEmptyCount() {
-    return this.$('.eui-day').not('.eui-day--empty').length;
+    return this.$('.eui-interval').not('.--is-empty').length;
   }
 
   disabledCount() {
-    return this.$('.eui-day--disabled').length;
+    return this.$('.eui-interval.--is-disabled').length;
   }
 
   notDisabledCount() {
-    return this.$('.eui-day').not('.eui-day--disabled').length;
+    return this.$('.eui-interval').not('.--is-disabled').length;
   }
 
   days() {
-    return this.$('.eui-day').map(trimText).toArray();
+    return this.$('.eui-interval').map(trimText).toArray();
   }
 
   headers() {
@@ -33,7 +33,7 @@ export default class DaySelector {
 
   isSelected(date) {
     let datetime = date.format(HTML5_DATETIME_FORMAT);
-    return this.$(`.eui-day[data-datetime="${datetime}"]`).hasClass('eui-day--selected');
+    return this.$(`.eui-interval[data-datetime="${datetime}"]`).hasClass('--is-selected');
   }
 }
 
