@@ -18,7 +18,7 @@
           tagName="li"
           moment=day
           interval='day'
-          is-selected=(contains-day selection day)
+          is-selected=(contains-day (get selection '[]') day)
         }}
       {{else}}
         {{#eui-interval
@@ -32,5 +32,3 @@
     {{/if}}
   {{/each}}
 </ol>
-
-{{!-- is-selected=(eq selection moment) --}}
