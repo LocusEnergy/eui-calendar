@@ -1,4 +1,4 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, only } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import MonthSelector from 'eui-calendar/tests/page-objects/month-selector';
@@ -28,7 +28,35 @@ test('default behavior', function(assert) {
     'October',
     'November',
     'December'
-  ], 'year calendar renders properly');
+  ], 'months selector renders properly');
+});
+
+test('yields months as block parameter', function(assert) {
+  this.render(hbs`
+    {{#eui-month-selector year=year as |month|}}
+      {{eui-interval
+        tagName="li"
+        moment=month
+        interval='month'
+        format='MMM'
+      }}
+    {{/eui-month-selector}}
+  `);
+
+  assert.deepEqual(this.component.months(), [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ], 'month selector renders block parameter properly');
 });
 
 test('selection array used to show months as selected', function(assert){

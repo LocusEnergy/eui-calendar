@@ -30,10 +30,15 @@ test('default behavior', function(assert) {
   ], 'headers are present');
 });
 
-test('month yields days into block param with all days', function(assert) {
+test('yields days as block parameter', function(assert) {
   this.render(hbs`
     {{#eui-day-selector month=month as |day|}}
-      {{eui-interval tagName="li" moment=day interval='day' is-disabled=(not (moment-same-month month day))}}
+      {{eui-interval
+        tagName="li"
+        moment=day
+        interval='day'
+        is-disabled=(not (moment-same-month month day))
+      }}
     {{/eui-day-selector}}
   `);
 

@@ -8,16 +8,16 @@ export default class MonthSelector {
   }
 
   monthCount() {
-    return this.$('.eui-month').length;
+    return this.$('.eui-interval').length;
   }
 
   months() {
-    return this.$('.eui-month').map(trimText).toArray();
+    return this.$('.eui-interval').map(trimText).toArray();
   }
 
   isSelected(date) {
     let datetime = date.format(HTML5_DATETIME_FORMAT);
-    return this.$(`.eui-month[data-datetime="${datetime}"]`).hasClass('eui-month--selected');
+    return this.$(`.eui-interval[data-datetime="${datetime}"]`).hasClass('--is-selected');
   }
 }
 
