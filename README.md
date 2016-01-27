@@ -26,3 +26,8 @@ This README outlines the details of collaborating on this Ember addon.
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+
+Questions / TODO:
+- remove 'eui' prefix from the internal components?
+- add warning if moment isn't defined in each selector? (for example: `return momentDecade(this.get('decade'), 'YYYY')` in year-selector)
