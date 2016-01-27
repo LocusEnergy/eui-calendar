@@ -1,13 +1,16 @@
-<ol class="eui-year--months">
+<ol class="eui-year-selector--years">
 
-  {{#each months as |month|}}
-    <li>
-      {{#if hasBlock}}
-        {{yield month}}
-      {{else}}
-        {{moment-format month 'MMMM'}}
-      {{/if}}
-    </li>
+  {{#each years as |year|}}
+    {{#if hasBlock}}
+      {{yield year}}
+    {{else}}
+      {{eui-interval
+        moment=year
+        interval='year'
+        is-disabled=(not (moment-same-decade decade year))
+        is-selected=(contains-year (get selection '[]') year)
+      }}
+    {{/if}}
   {{/each}}
 
 </ol>

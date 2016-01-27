@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import layout from '../templates/components/eui-year-selector';
-import _range from 'lodash/utility/range';
-import moment from 'moment';
+import momentDecade from 'eui-calendar/utils/moment-decade';
 
 export default Ember.Component.extend({
   layout,
 
-  
-
+  years: Ember.computed('decade', function() {
+    return momentDecade(this.get('decade'), 'YYYY');
+  })
 });

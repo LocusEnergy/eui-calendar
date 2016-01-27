@@ -1,24 +1,72 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Moment from 'moment';
+import YearSelector from 'eui-calendar/tests/page-objects/year-selector';
 
 moduleForComponent('eui-year-selector', 'Integration | Component | Selectors | eui year', {
-  integration: true
+  integration: true,
+  beforeEach() {
+    this.component = new YearSelector(this);
+  }
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  this.set('decade', moment('2016', 'YYYY'));
+  this.render(hbs`{{eui-year-selector decade=decade}}`);
+  assert.deepEqual(this.component.years(), [
+    '2009',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020'
+  ], 'renders decade plus one year on either side');
 
-  this.render(hbs`{{eui-year-selector}}`);
+  assert.equal(this.component.getDisabledCount(), 2, 'there are 2 years not in the decade');
+});
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
+test('yields years with block parameter', function(assert) {
+  this.set('decade', moment('2016', 'YYYY'));
   this.render(hbs`
-    {{#eui-year-selector}}
-      template block text
+    {{#eui-year-selector decade=decade as |year|}}
+      {{#if (moment-same-decade decade year)}}
+        {{eui-interval
+          moment=year
+          interval='year'
+        }}
+      {{else}}
+        {{#eui-interval}}{{/eui-interval}}
+      {{/if}}
     {{/eui-year-selector}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.deepEqual(this.component.years(), [
+    '',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    ''
+  ], 'renders decade only');
+});
+
+test('selection array used to show years as selected', function(assert) {
+  const YEAR = moment('2012', 'YYYY');
+  this.set('decade', moment('2016', 'YYYY'));
+  this.set('selection', new Ember.A([ YEAR ]));
+  this.render(hbs`{{eui-year-selector decade=decade selection=selection}}`);
+  assert.ok(this.component.isSelected(YEAR), 'month is selected');
+  assert.ok(!this.component.isSelected(moment('2018', 'YYYY')));
 });
