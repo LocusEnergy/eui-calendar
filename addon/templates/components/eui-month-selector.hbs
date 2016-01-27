@@ -1,9 +1,14 @@
 <ol class="eui-month-selector--months">
   {{#each months as |month|}}
-    {{eui-month
-      tagName="li"
-      month=month
-      is-selected=(contains-month (get selection '[]') month)
-    }}
+    {{#if hasBlock}}
+      {{yield month}}
+    {{else}}
+      {{eui-interval
+        tagName="li"
+        moment=month
+        interval='month'
+        is-selected=(contains-month (get selection '[]') month)
+      }}
+    {{/if}}
   {{/each}}
 </ol>
