@@ -35,7 +35,6 @@ test('yields months as block parameter', function(assert) {
   this.render(hbs`
     {{#eui-month-selector year=year as |month|}}
       {{eui-interval
-        tagName="li"
         moment=month
         interval='month'
         format='MMM'

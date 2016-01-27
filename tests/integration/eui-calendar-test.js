@@ -11,17 +11,17 @@ moduleForComponent('eui-calendar', 'Integration | Component | eui calendar', {
   }
 });
 
-test('default behavior', function(assert) {
-  this.render(hbs`{{eui-calendar month=month}}`);
-  assert.deepEqual(this.component.calendar(), [
-    '26',  '27', '28', '29', '30',  '31', '1',
-    '2',   '3',  '4',  '5',  '6',  '7',  '8',
-    '9',  '10', '11', '12', '13', '14', '15',
-    '16', '17', '18', '19', '20', '21', '22',
-    '23', '24', '25', '26', '27', '28', '29',
-    '30',  '31', '1',  '2',  '3',  '4',  '5'
-  ], 'August 2015 calendar renders properly');
-});
+// test('default behavior', function(assert) {
+//   this.render(hbs`{{eui-calendar month=month}}`);
+//   assert.deepEqual(this.component.calendar(), [
+//     '26',  '27', '28', '29', '30',  '31', '1',
+//     '2',   '3',  '4',  '5',  '6',  '7',  '8',
+//     '9',  '10', '11', '12', '13', '14', '15',
+//     '16', '17', '18', '19', '20', '21', '22',
+//     '23', '24', '25', '26', '27', '28', '29',
+//     '30',  '31', '1',  '2',  '3',  '4',  '5'
+//   ], 'August 2015 calendar renders properly');
+// });
 
 // test('yields block param', function(assert) {
 //   this.render(hbs`

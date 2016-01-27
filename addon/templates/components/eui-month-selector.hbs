@@ -4,7 +4,6 @@
       {{yield month}}
     {{else}}
       {{eui-interval
-        tagName="li"
         moment=month
         interval='month'
         is-selected=(contains-month (get selection '[]') month)

@@ -1,6 +1,6 @@
 {{!-- {{eui-calendar selection=selection}} --}}
 
-{{!-- {{#liquid-if (eq intervalSelector 'years')}}
+{{!-- {{#if (eq intervalSelector 'years')}}
 
   {{eui-interval-selector
     interval='year'
@@ -30,7 +30,7 @@
     zoom-out=(action 'selectMonths')
   }}
 
-{{/liquid-if}} --}}
+{{/if}} --}}
 
 {{!-- {{#eui-day-selector month=month as |day|}}
   {{eui-interval

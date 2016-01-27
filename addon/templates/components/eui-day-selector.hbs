@@ -15,14 +15,12 @@
     {{else}}
       {{#if (moment-same-month month day)}}
         {{eui-interval
-          tagName="li"
           moment=day
           interval='day'
           is-selected=(contains-day (get selection '[]') day)
         }}
       {{else}}
         {{#eui-interval
-          tagName="li"
           moment=day
           interval='day'
           is-empty=true
