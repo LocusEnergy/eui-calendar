@@ -53,7 +53,7 @@ test('month yields days into block param with all days', function(assert) {
   ], 'headers are present');
 });
 
-only('selection array used to show days as selected', function(assert){
+test('selection array used to show days as selected', function(assert){
   const DATE1 = moment('August 1, 2015');
   const DATE2 = moment('August 5, 2015');
   this.set('selection', new Ember.A([ DATE1, DATE2 ]));
