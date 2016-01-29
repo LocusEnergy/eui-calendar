@@ -7,31 +7,31 @@ const { computed } = Ember;
 
 
 export default Ember.Component.extend({
-  layout,
-  intervalSelector: 'days',
-  selection: Moment(),
-
-  actions: {
-    selectMoment(moment) {
-      this.set('selection', Moment(moment));
-    },
-
-    selectDays(moment) {
-      // this.send('selectMoment', moment);
-      this.set('intervalSelector', 'days');
-    },
-
-    selectMonths(moment) {
-      // this.send('selectMoment', moment);
-      this.set('intervalSelector', 'months');
-    },
-
-    selectYears() {
-      this.set('intervalSelector', 'years');
-    },
-
-    nullAction() {
-      Em.K
-    }
-  }
+  // layout,
+  // intervalSelector: 'days',
+  // selection: Moment(),
+  //
+  // actions: {
+  //   selectMoment(moment) {
+  //     this.set('selection', Moment(moment));
+  //   },
+  //
+  //   selectDays(moment) {
+  //     // this.send('selectMoment', moment);
+  //     this.set('intervalSelector', 'days');
+  //   },
+  //
+  //   selectMonths(moment) {
+  //     // this.send('selectMoment', moment);
+  //     this.set('intervalSelector', 'months');
+  //   },
+  //
+  //   selectYears() {
+  //     this.set('intervalSelector', 'years');
+  //   },
+  //
+  //   nullAction() {
+  //     Em.K
+  //   }
+  // }
 });
