@@ -6,15 +6,10 @@ import momentDecade from 'eui-calendar/utils/moment-decade';
 const EUIIntervalSelector = Ember.Component.extend({
   layout,
   classNames: ['eui-interval-selector'],
-  didReceiveAttrs() {
-    if (!this.get('interval')) {
-      this.set('interval', 'month');
-    }
-
-    if (!this.get('moment')) {
-      this.set('moment', Moment());
-    }
-  },
+  interval: 'month',
+  moment: Ember.computed(function() {
+    return Moment();
+  }),
 
   name: Ember.computed('moment', 'interval', function() {
     const moment = this.get('moment');
@@ -42,15 +37,15 @@ const EUIIntervalSelector = Ember.Component.extend({
   },
 
   actions: {
-    'on-zoom'() {
+    onZoom() {
       this.sendAction('on-zoom', this.get('interval'))
     },
 
-    'on-previous'() {
+    onPrevious() {
       this.sendAction('on-previous', this._shiftMoment('previous'));
     },
 
-    'on-next'() {
+    onNext() {
       this.sendAction('on-next', this._shiftMoment('next'));
     }
   }
