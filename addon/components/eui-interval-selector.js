@@ -5,10 +5,10 @@ import momentDecade from 'eui-calendar/utils/moment-decade';
 
 const EUIIntervalSelector = Ember.Component.extend({
   layout,
-
+  classNames: ['eui-interval-selector'],
   didReceiveAttrs() {
     if (!this.get('interval')) {
-      this.set('interval', 'month')
+      this.set('interval', 'month');
     }
 
     if (!this.get('moment')) {
