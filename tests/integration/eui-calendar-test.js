@@ -1,7 +1,7 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { moduleForComponent, test, only } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Moment from 'moment';
-import CalendarPageObject from 'eui-calendar/tests/calendar-page-object';
+import CalendarPageObject from 'eui-calendar/tests/page-objects/calendar';
 
 const FORMAT = 'MMMM YYYY';
 
@@ -13,38 +13,30 @@ moduleForComponent('eui-calendar', 'Integration | Component | eui calendar', {
 });
 
 test('it should show month calendar by default', function(assert){
-
+  assert.expect(3);
   let now = Moment().format(FORMAT);
 
   this.render(hbs`{{eui-calendar}}`);
-
   assert.ok(this.$('.eui-interval-selector').length, 'interval selector renders');
-  assert.ok(this.$('.eui-interval-selector--name').text().trim(), now);
-
+  assert.ok(this.component.getName(), now);
   assert.ok(this.$('.eui-day-selector').length, 'day selector renders');
 });
 
-test('it should zoomout when click on interval selector name', function(){
-
+test('it should zoomout when click on interval selector name', function(assert){
+  assert.expect(5);
   let now = Moment('2012-02-14');
   this.set('date', now);
 
   this.render(hbs`{{eui-calendar date}}`);
-
-  assert.equal(this.$('.eui-interval-selector').text(), 'February 2012', 'interval name is February 2012');
+  assert.equal(this.component.getName(), 'February 2012', 'interval name is February 2012');
 
   this.$(':contains("February 2012")').click();
-
   assert.ok(this.$('.eui-month-selector').length, 'month selector is visible');
-
-  assert.equal(this.$('.eui-interval-selector').text(), '2012', 'interval name became the year');
+  assert.equal(this.component.getName(), '2012', 'interval name became the year');
 
   this.$(':contains("2012")').click();
-
-  assert.equal(this.$('.eui-year-selector').length, 'year selector is visible');
-
-  assert.equal(this.$('.eui-interval-selector--name').text(), '2010-2019', 'interval name is the decade');
-
+  assert.ok(this.$('.eui-year-selector').length, 'year selector is visible');
+  assert.equal(this.component.getName(), '2010 - 2019', 'interval name is the decade');
 });
 
 test('it should show previous month in day selector mode', function(assert){
@@ -53,9 +45,7 @@ test('it should show previous month in day selector mode', function(assert){
   this.set('date', now);
 
   this.render(hbs`{{eui-calendar date}}`);
-
   this.$('.eui-interval-selector--previous').click();
-
   assert.equal(this.$('.eui-interval-selector--name').text().trim(), 'January', 'interval selector name changed to january after previous clicked');
 });
 

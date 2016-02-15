@@ -4,6 +4,7 @@ import momentDecade from 'eui-calendar/utils/moment-decade';
 
 export default Ember.Component.extend({
   layout,
+  classNames: 'eui-year-selector',
 
   years: Ember.computed('decade', function() {
     return momentDecade(this.get('decade'), 'YYYY');

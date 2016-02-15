@@ -1,45 +1,11 @@
-{{!-- {{eui-calendar selection=selection}} --}}
+{{eui-interval-selector date interval
+  on-zoom=(action 'onZoom')
+}}
 
-{{!-- {{#if (eq intervalSelector 'years')}}
-
-  {{eui-interval-selector
-    interval='year'
-    momentRange=yearRange
-    selection=selection
-    on-select=(action 'selectMonths')
-    zoom-out=(action 'nullAction')
-  }}
-
-{{else if (eq intervalSelector 'months')}}
-
-  {{eui-interval-selector
-    interval='month'
-    momentRange=monthRange
-    selection=selection
-    on-select=(action 'selectDays')
-    zoom-out=(action 'selectYears')
-  }}
-
-{{else}}
-
-  {{eui-interval-selector
-    interval='day'
-    momentRange=dayRange
-    selection=selection
-    on-select=(action 'selectMoment')
-    zoom-out=(action 'selectMonths')
-  }}
-
-{{/if}} --}}
-
-{{!-- {{#eui-day-selector month=month as |day|}}
-  {{eui-interval
-    tagName="li"
-    moment=day
-    interval='day'
-    classNames='eui-day'
-    is-disabled=(not (moment-same-month month day))
-    click=(action (mut selection) day)
-    is-selected=(eq selection day)
-  }}
-{{/eui-day-selector}} --}}
+{{#if (eq interval 'month')}}
+  {{eui-day-selector month=date}}
+{{else if (eq interval 'year')}}
+  {{eui-month-selector year=date}}
+{{else if (eq interval 'decade')}}
+  {{eui-year-selector decade=date}}
+{{/if}}
