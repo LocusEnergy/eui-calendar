@@ -12,8 +12,17 @@ const EUICalendar = Ember.Component.extend({
     return 'month'
   }),
 
-  date: computed(function() {
+  selection: computed(function() {
     return Moment();
+  }),
+
+  date: computed({
+    get() {
+      return Moment();
+    },
+    set(key, value) {
+      return value;
+    }
   }),
 
   actions: {
@@ -25,28 +34,23 @@ const EUICalendar = Ember.Component.extend({
       if (interval === 'year') {
         this.set('interval', 'decade')
       }
-    }
-    // selectMoment(moment) {
-    //   this.set('selection', Moment(moment));
-    // },
-    //
-    // selectDays(moment) {
-    //   // this.send('selectMoment', moment);
-    //   this.set('intervalSelector', 'days');
-    // },
-    //
-    // selectMonths(moment) {
-    //   // this.send('selectMoment', moment);
-    //   this.set('intervalSelector', 'months');
-    // },
-    //
-    // selectYears() {
-    //   this.set('intervalSelector', 'years');
-    // },
-    //
-    // nullAction() {
-    //   Em.K
-    // }
+    },
+
+    setDate(date) {
+      this.set('date', date)
+    },
+
+    selectDate(date) {
+      this.sendAction('on-select', date)
+    },
+
+    chooseMonth() {
+      this.set('interval', 'month')
+    },
+
+    chooseYear() {
+      this.set('interval', 'year')
+    },
   }
 });
 

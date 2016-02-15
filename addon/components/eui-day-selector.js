@@ -16,4 +16,10 @@ export default Ember.Component.extend({
     let dayRange = _range((-1)*dayOfWeek, DAY_COUNT - dayOfWeek);
     return dayRange.map(d => monthStart.clone().add(d, 'days'));
   }),
+
+  actions: {
+    selectDay(day) {
+      this.set('selection', day);
+    }
+  }
 });

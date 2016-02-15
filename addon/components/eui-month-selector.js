@@ -12,5 +12,11 @@ export default Ember.Component.extend({
     // ensures that we start with the correct month in the correct year
     let january = Moment().year(year).month(0).startOf('month');
     return _range(12).map(m => january.clone().add(m, 'months'));
-  })
+  }),
+
+  actions: {
+    selectMonth(month) {
+      this.set('selection', month);
+    }
+  }
 });

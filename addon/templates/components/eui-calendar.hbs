@@ -1,11 +1,23 @@
 {{eui-interval-selector date interval
   on-zoom=(action 'onZoom')
+  on-previous=(action 'setDate')
+  on-next=(action 'setDate')
 }}
 
 {{#if (eq interval 'month')}}
-  {{eui-day-selector month=date}}
+  {{eui-day-selector
+    month=date
+    selection=selection
+    click=(action 'selectDate' selection)
+  }}
 {{else if (eq interval 'year')}}
-  {{eui-month-selector year=date}}
+  {{eui-month-selector
+    year=date
+    click=(action 'chooseMonth')
+  }}
 {{else if (eq interval 'decade')}}
-  {{eui-year-selector decade=date}}
+  {{eui-year-selector
+    decade=date
+    click=(action 'chooseYear')
+  }}
 {{/if}}
