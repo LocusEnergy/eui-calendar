@@ -54,7 +54,7 @@ test('renders year', function(assert) {
 test('is-selected class', function(assert) {
   assert.expect(4);
 
-  this.on('selectMoment', (moment) => {
+  this.on('onSelect', (moment) => {
     this.set('selection', moment);
   });
 
@@ -63,7 +63,7 @@ test('is-selected class', function(assert) {
       moment=moment
       interval='day'
       selection=selection
-      click=(action 'selectMoment' moment)
+      on-select=(action 'onSelect')
     }}
   `);
   assert.ok(!this.component.isSelected(), 'is not selected no selection has been defined');

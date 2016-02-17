@@ -8,16 +8,16 @@
   {{eui-day-selector
     month=date
     selection=selection
-    click=(action 'selectDate' selection)
+    select-day=(action 'selectDay')
   }}
 {{else if (eq interval 'year')}}
   {{eui-month-selector
     year=date
-    click=(action 'chooseMonth')
+    select-month=(action 'selectMonth')
   }}
 {{else if (eq interval 'decade')}}
   {{eui-year-selector
     decade=date
-    click=(action 'chooseYear')
+    select-year=(action 'selectYear')
   }}
 {{/if}}

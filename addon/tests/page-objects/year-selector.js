@@ -19,6 +19,11 @@ export default class YearSelector {
     let datetime = date.format(HTML5_DATETIME_FORMAT);
     return this.$(`.eui-interval[data-datetime="${datetime}"]`).hasClass('--is-selected');
   }
+
+  selectYear(year) {
+    let datetime = year.format(HTML5_DATETIME_FORMAT);
+    this.$(`.eui-interval[data-datetime="${datetime}"]`).click();
+  }
 }
 
 function trimText() {

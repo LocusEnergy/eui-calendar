@@ -8,9 +8,7 @@ const { computed } = Ember;
 const EUICalendar = Ember.Component.extend({
   layout,
 
-  interval: computed(function() {
-    return 'month'
-  }),
+  interval: 'month',
 
   selection: computed(function() {
     return Moment();
@@ -37,18 +35,20 @@ const EUICalendar = Ember.Component.extend({
     },
 
     setDate(date) {
-      this.set('date', date)
+      this.set('date', date);
     },
 
-    selectDate(date) {
-      this.sendAction('on-select', date)
+    selectDay(day) {
+      this.sendAction('on-select', day);
     },
 
-    chooseMonth() {
-      this.set('interval', 'month')
+    selectMonth(month) {
+      this.send('setDate', month);
+      this.set('interval', 'month');
     },
 
-    chooseYear() {
+    selectYear(year) {
+      this.send('setDate', year);
       this.set('interval', 'year')
     },
   }

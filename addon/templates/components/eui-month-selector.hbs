@@ -6,7 +6,7 @@
       {{eui-interval
         moment=month
         interval='month'
-        is-selected=(contains-month (get selection '[]') month)
+        on-select=(action 'selectMonth')
       }}
     {{/if}}
   {{/each}}

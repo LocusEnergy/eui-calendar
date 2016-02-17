@@ -66,3 +66,21 @@ test('selection array used to show days as selected', function(assert){
   assert.ok(this.component.isSelected(DATE2));
   assert.ok(!this.component.isSelected(moment('August 10, 2015')));
 });
+
+test('select-day action', function(assert) {
+  const DAY = moment('August 18, 2015');
+  let selectedDay;
+
+  this.on('selectDay', function(day) {
+    selectedDay = day;
+  });
+
+  this.render(hbs`
+    {{eui-day-selector
+      month=month
+      select-day=(action 'selectDay')
+    }}
+  `);
+  this.component.selectDay(DAY);
+  assert.equal(selectedDay.format('YYYY-MM-DD'), '2015-08-18', 'day has been selected');
+});

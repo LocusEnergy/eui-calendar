@@ -7,8 +7,8 @@
       {{eui-interval
         moment=year
         interval='year'
+        on-select=(action 'selectYear')
         is-disabled=(not (moment-same-decade decade year))
-        is-selected=(contains-year (get selection '[]') year)
       }}
     {{/if}}
   {{/each}}

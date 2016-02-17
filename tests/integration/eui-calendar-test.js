@@ -133,14 +133,13 @@ test('it should trigger on-select action when item is clicked', function(assert)
   assert.equal(lastDate.format('YYYY-MM-DD'), '2012-02-17', 'received selected date');
 });
 
-only('it should allow user to select a date from different month and year', function(assert){
+test('it should allow user to select a date from different month and year', function(assert){
   assert.expect(1);
   let now = Moment('2012-02-14');
   this.set('date', now);
 
   let lastDate;
   this.on('selection', function(date) {
-    console.log(date.format('YYYY-MM-DD'))
     lastDate = date;
   });
 
@@ -150,7 +149,6 @@ only('it should allow user to select a date from different month and year', func
   this.$('.eui-interval-selector--previous').click(); // go to 2000s
   this.$(':contains(2005)').click(); // zoom in to 2005
   this.$(':contains(May)').click(); // zoom in to May
-  this.$('.eui-interval:contains(3)').click();
-
-  assert.equal(lastDate.format('YYYY-MM-DD'), '2005-05-03', 'received selected date');
+  this.$('.eui-interval:contains(31)').click();
+  assert.equal(lastDate.format('YYYY-MM-DD'), '2005-05-31', 'received selected date');
 });

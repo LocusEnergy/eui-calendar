@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
   actions: {
     selectMonth(month) {
-      this.set('selection', month);
+      this.sendAction('select-month', month);
     }
   }
 });

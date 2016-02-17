@@ -58,10 +58,21 @@ test('yields months as block parameter', function(assert) {
   ], 'month selector renders block parameter properly');
 });
 
-test('selection array used to show months as selected', function(assert){
-  const MONTH = moment('August 2015');
-  this.set('selection', new Ember.A([ MONTH ]));
-  this.render(hbs`{{eui-month-selector year=year selection=selection}}`);
-  assert.ok(this.component.isSelected(MONTH), 'month is selected');
-  assert.ok(!this.component.isSelected(moment('March 2015')));
+test('select-month action', function(assert) {
+  const MONTH = moment('June 2015');
+  let selectedMonth;
+
+  this.on('selectMonth', function(month) {
+    selectedMonth = month;
+  });
+
+  this.render(hbs`
+    {{eui-month-selector
+      year=year
+      select-month=(action 'selectMonth')
+    }}
+  `);
+
+  this.component.selectMonth(MONTH);
+  assert.equal(selectedMonth.format('MMMM YYYY'), 'June 2015', 'month has been selected');
 });

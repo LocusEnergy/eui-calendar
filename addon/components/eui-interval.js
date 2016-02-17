@@ -56,5 +56,9 @@ export default Ember.Component.extend({
         return moment.isSame(this.get('selection'), this.get('interval'));
       }
     }
-  })
+  }),
+
+  click() {
+    this.sendAction('on-select', this.get('moment'));
+  }
 });

@@ -18,7 +18,7 @@
           moment=day
           interval='day'
           is-selected=(contains-day (get selection '[]') day)
-          click=(action 'selectDay' day)
+          on-select=(action 'selectDay')
         }}
       {{else}}
         {{#eui-interval

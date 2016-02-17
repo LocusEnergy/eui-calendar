@@ -62,11 +62,23 @@ test('yields years with block parameter', function(assert) {
   ], 'renders decade only');
 });
 
-test('selection array used to show years as selected', function(assert) {
-  const YEAR = moment('2012', 'YYYY');
+
+test('select-year action', function(assert) {
   this.set('decade', moment('2016', 'YYYY'));
-  this.set('selection', new Ember.A([ YEAR ]));
-  this.render(hbs`{{eui-year-selector decade=decade selection=selection}}`);
-  assert.ok(this.component.isSelected(YEAR), 'month is selected');
-  assert.ok(!this.component.isSelected(moment('2018', 'YYYY')));
+  const YEAR = moment('2019', 'YYYY');
+  let selectedYear;
+
+  this.on('selectYear', function(year) {
+    selectedYear = year;
+  });
+
+  this.render(hbs`
+    {{eui-year-selector
+      decade=decade
+      select-year=(action 'selectYear')
+    }}
+  `);
+
+  this.component.selectYear(YEAR);
+  assert.equal(selectedYear.format('YYYY'), '2019', 'year has been selected');
 });

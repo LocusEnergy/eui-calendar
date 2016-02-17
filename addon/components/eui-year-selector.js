@@ -8,5 +8,11 @@ export default Ember.Component.extend({
 
   years: Ember.computed('decade', function() {
     return momentDecade(this.get('decade'), 'YYYY');
-  })
+  }),
+
+  actions: {
+    selectYear(year) {
+      this.sendAction('select-year', year);
+    }
+  }
 });
