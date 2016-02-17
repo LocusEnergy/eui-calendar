@@ -3,9 +3,7 @@
     {{#if hasBlock}}
       {{yield month}}
     {{else}}
-      {{eui-interval
-        moment=month
-        interval='month'
+      {{eui-interval month 'month'
         on-select=(action 'selectMonth')
       }}
     {{/if}}

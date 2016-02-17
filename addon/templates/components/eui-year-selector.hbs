@@ -4,9 +4,7 @@
     {{#if hasBlock}}
       {{yield year}}
     {{else}}
-      {{eui-interval
-        moment=year
-        interval='year'
+      {{eui-interval year 'year'
         on-select=(action 'selectYear')
         is-disabled=(not (moment-same-decade decade year))
       }}

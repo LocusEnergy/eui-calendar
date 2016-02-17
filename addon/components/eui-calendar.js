@@ -4,7 +4,6 @@ import Moment from 'moment';
 
 const { computed } = Ember;
 
-
 const EUICalendar = Ember.Component.extend({
   layout,
 

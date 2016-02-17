@@ -16,12 +16,7 @@ moduleForComponent('eui-interval', 'Integration | Component | eui interval', {
 });
 
 test('renders days', function(assert) {
-  this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='day'
-    }}
-  `);
+  this.render(hbs`{{eui-interval moment 'day'}}`);
 
   assert.equal(this.component.value(), '21', 'renders content');
   assert.equal(this.component.datetime(), this.get('datetime'), 'has data-datetime attribute');
@@ -29,10 +24,7 @@ test('renders days', function(assert) {
 
 test('renders months', function(assert) {
   this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='month'
-    }}
+    {{eui-interval moment 'month'}}
   `);
 
   assert.equal(this.component.value(), 'January', 'renders content');
@@ -40,12 +32,7 @@ test('renders months', function(assert) {
 });
 
 test('renders year', function(assert) {
-  this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='year'
-    }}
-  `);
+  this.render(hbs`{{eui-interval moment 'year'}}`);
 
   assert.equal(this.component.value(), '2014', 'renders content');
   assert.equal(this.component.datetime(), this.get('datetime'), 'has data-datetime attribute');
@@ -59,9 +46,7 @@ test('is-selected class', function(assert) {
   });
 
   this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='day'
+    {{eui-interval moment 'day'
       selection=selection
       on-select=(action 'onSelect')
     }}
@@ -81,23 +66,14 @@ test('is-selected class', function(assert) {
 test('is-now class', function(assert) {
   assert.expect(4);
   this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='day'
-    }}
+    {{eui-interval moment 'day'}}
   `);
   assert.ok(!this.component.isNow(), 'a date in the past is not now');
 
   this.set('moment', Moment());
   assert.ok(this.component.isNow(), 'has is-now class when moment is now');
 
-  this.render(hbs`
-    {{eui-interval
-      moment=moment
-      interval='day'
-      now=now
-    }}
-  `);
+  this.render(hbs`{{eui-interval moment 'day' now}}`);
 
   this.set('now', Moment().subtract(1, 'day'));
   assert.ok(!this.component.isNow(), 'does not have is-now class when now property is not now');

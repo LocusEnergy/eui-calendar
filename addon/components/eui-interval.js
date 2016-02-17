@@ -12,7 +12,7 @@ const formatDictionary = {
   year: 'YYYY'
 };
 
-export default Ember.Component.extend({
+const EUIInterval = Ember.Component.extend({
   layout,
   attributeBindings: ['data-datetime'],
   classNames: ['eui-interval'],
@@ -62,3 +62,9 @@ export default Ember.Component.extend({
     this.sendAction('on-select', this.get('moment'));
   }
 });
+
+EUIInterval.reopenClass({
+  positionalParams: ['moment', 'interval', 'now']
+});
+
+export default EUIInterval;
