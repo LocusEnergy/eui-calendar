@@ -9,10 +9,6 @@ const EUICalendar = Ember.Component.extend({
 
   interval: 'month',
 
-  selection: computed(function() {
-    return Moment();
-  }),
-
   date: computed({
     get() {
       return Moment();

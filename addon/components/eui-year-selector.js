@@ -12,7 +12,7 @@ const YearSelector = Ember.Component.extend({
 
   actions: {
     selectYear(year) {
-      this.sendAction('select-year', year);
+      this.sendAction('select-moment', year);
     }
   }
 });

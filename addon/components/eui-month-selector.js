@@ -16,7 +16,7 @@ const MonthSelector = Ember.Component.extend({
 
   actions: {
     selectMonth(month) {
-      this.sendAction('select-month', month);
+      this.sendAction('select-moment', month);
     }
   }
 });

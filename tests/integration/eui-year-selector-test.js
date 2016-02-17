@@ -71,7 +71,7 @@ test('select-year action', function(assert) {
 
   this.render(hbs`
     {{eui-year-selector decade
-      select-year=(action 'selectYear')
+      select-moment=(action 'selectYear')
     }}
   `);
 

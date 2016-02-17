@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
@@ -55,15 +54,6 @@ test('yields days as block parameter', function(assert) {
   ], 'headers are present');
 });
 
-test('selection array used to show days as selected', function(assert){
-  const DATE1 = moment('August 1, 2015');
-  const DATE2 = moment('August 5, 2015');
-  this.set('selection', new Ember.A([ DATE1, DATE2 ]));
-  this.render(hbs`{{eui-day-selector month selection}}`);
-  assert.ok(this.component.isSelected(DATE1));
-  assert.ok(this.component.isSelected(DATE2));
-  assert.ok(!this.component.isSelected(moment('August 10, 2015')));
-});
 
 test('select-day action', function(assert) {
   const DAY = moment('August 18, 2015');
@@ -75,9 +65,11 @@ test('select-day action', function(assert) {
 
   this.render(hbs`
     {{eui-day-selector month
-      select-day=(action 'selectDay')
+      selection=selection
+      select-moment=(action 'selectDay')
     }}
   `);
   this.component.selectDay(DAY);
   assert.equal(selectedDay.format('YYYY-MM-DD'), '2015-08-18', 'day has been selected');
+  assert.ok(this.component.isSelected(DAY), 'element has selected class');
 });

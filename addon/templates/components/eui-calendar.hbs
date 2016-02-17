@@ -6,14 +6,14 @@
 
 {{#if (eq interval 'month')}}
   {{eui-day-selector date
-    select-day=(action 'selectDay')
+    select-moment=(action 'selectDay')
   }}
 {{else if (eq interval 'year')}}
   {{eui-month-selector date
-    select-month=(action 'selectMonth')
+    select-moment=(action 'selectMonth')
   }}
 {{else if (eq interval 'decade')}}
   {{eui-year-selector date
-    select-year=(action 'selectYear')
+    select-moment=(action 'selectYear')
   }}
 {{/if}}

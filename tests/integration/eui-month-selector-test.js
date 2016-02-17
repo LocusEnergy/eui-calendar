@@ -68,7 +68,7 @@ test('select-month action', function(assert) {
 
   this.render(hbs`
     {{eui-month-selector year
-      select-month=(action 'selectMonth')
+      select-moment=(action 'selectMonth')
     }}
   `);
 
