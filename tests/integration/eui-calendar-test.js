@@ -1,4 +1,4 @@
-import { moduleForComponent, test, only } from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Moment from 'moment';
 import CalendarPageObject from 'eui-calendar/tests/page-objects/calendar';
@@ -126,7 +126,7 @@ test('it should trigger on-select action when item is clicked', function(assert)
     lastDate = date;
   });
 
-  this.render(hbs`{{eui-calendar date on-select='selection'}}`)
+  this.render(hbs`{{eui-calendar date on-select='selection'}}`);
 
   this.$('.eui-interval:contains("17")').click();
 

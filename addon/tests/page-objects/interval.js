@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 export default class Interval {
   constructor(env) {
     this.env = env;

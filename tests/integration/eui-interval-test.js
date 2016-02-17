@@ -79,7 +79,7 @@ test('is-selected class', function(assert) {
 });
 
 test('is-now class', function(assert) {
-  assert.expect(4)
+  assert.expect(4);
   this.render(hbs`
     {{eui-interval
       moment=moment

@@ -1,4 +1,4 @@
-import { moduleForComponent, test, only } from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import moment from 'moment';
 import MonthSelector from 'eui-calendar/tests/page-objects/month-selector';

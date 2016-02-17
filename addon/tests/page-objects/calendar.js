@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
+// import Ember from 'ember';
+// import { HTML5_DATETIME_FORMAT } from 'eui-calendar/constants';
 
 export default class CalendarPageObject {
   constructor(env) {
@@ -25,7 +25,7 @@ export default class CalendarPageObject {
   //   return this.$(`.eui-day[data-datetime="${datetime}"]`).hasClass('eui-day--selected');
   // }
 }
-
-function trimText() {
-  return Ember.$(this).text().trim();
-}
+//
+// function trimText() {
+//   return Ember.$(this).text().trim();
+// }

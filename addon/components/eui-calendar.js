@@ -26,11 +26,11 @@ const EUICalendar = Ember.Component.extend({
   actions: {
     onZoom(interval) {
       if (interval === 'month') {
-        this.set('interval', 'year')
+        this.set('interval', 'year');
       }
 
       if (interval === 'year') {
-        this.set('interval', 'decade')
+        this.set('interval', 'decade');
       }
     },
 
@@ -49,7 +49,7 @@ const EUICalendar = Ember.Component.extend({
 
     selectYear(year) {
       this.send('setDate', year);
-      this.set('interval', 'year')
+      this.set('interval', 'year');
     },
   }
 });

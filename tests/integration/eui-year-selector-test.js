@@ -11,7 +11,7 @@ moduleForComponent('eui-year-selector', 'Integration | Component | Selectors | e
 });
 
 test('it renders', function(assert) {
-  this.set('decade', moment('2016', 'YYYY'));
+  this.set('decade', Moment('2016', 'YYYY'));
   this.render(hbs`{{eui-year-selector decade=decade}}`);
   assert.deepEqual(this.component.years(), [
     '2009',
@@ -32,7 +32,7 @@ test('it renders', function(assert) {
 });
 
 test('yields years with block parameter', function(assert) {
-  this.set('decade', moment('2016', 'YYYY'));
+  this.set('decade', Moment('2016', 'YYYY'));
   this.render(hbs`
     {{#eui-year-selector decade=decade as |year|}}
       {{#if (moment-same-decade decade year)}}
@@ -64,8 +64,8 @@ test('yields years with block parameter', function(assert) {
 
 
 test('select-year action', function(assert) {
-  this.set('decade', moment('2016', 'YYYY'));
-  const YEAR = moment('2019', 'YYYY');
+  this.set('decade', Moment('2016', 'YYYY'));
+  const YEAR = Moment('2019', 'YYYY');
   let selectedYear;
 
   this.on('selectYear', function(year) {

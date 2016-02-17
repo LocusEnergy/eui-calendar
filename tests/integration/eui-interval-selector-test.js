@@ -1,4 +1,4 @@
-import { moduleForComponent, test, only } from 'ember-qunit';
+import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Moment from 'moment';
 import IntervalSelector from 'eui-calendar/tests/page-objects/interval-selector';

@@ -15,7 +15,7 @@ const EUIIntervalSelector = Ember.Component.extend({
     const moment = this.get('moment');
     const interval = this.get('interval');
     if (interval === 'year') {
-      return Moment(moment).format('YYYY')
+      return Moment(moment).format('YYYY');
     }
 
     if (interval === 'decade') {
@@ -38,7 +38,7 @@ const EUIIntervalSelector = Ember.Component.extend({
 
   actions: {
     onZoom() {
-      this.sendAction('on-zoom', this.get('interval'))
+      this.sendAction('on-zoom', this.get('interval'));
     },
 
     onPrevious() {
@@ -55,4 +55,4 @@ EUIIntervalSelector.reopenClass({
   positionalParams: ['moment', 'interval']
 });
 
-export default EUIIntervalSelector
+export default EUIIntervalSelector;
