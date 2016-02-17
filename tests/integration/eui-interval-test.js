@@ -73,7 +73,7 @@ test('is-now class', function(assert) {
   this.set('moment', Moment());
   assert.ok(this.component.isNow(), 'has is-now class when moment is now');
 
-  this.render(hbs`{{eui-interval moment 'day' now}}`);
+  this.render(hbs`{{eui-interval moment 'day' now=now}}`);
 
   this.set('now', Moment().subtract(1, 'day'));
   assert.ok(!this.component.isNow(), 'does not have is-now class when now property is not now');

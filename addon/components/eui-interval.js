@@ -64,7 +64,7 @@ const EUIInterval = Ember.Component.extend({
 });
 
 EUIInterval.reopenClass({
-  positionalParams: ['moment', 'interval', 'now']
+  positionalParams: ['moment', 'interval']
 });
 
 export default EUIInterval;
