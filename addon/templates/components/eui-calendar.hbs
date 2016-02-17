@@ -5,15 +5,9 @@
 }}
 
 {{#if (eq interval 'month')}}
-  {{eui-day-selector date
-    select-moment=(action 'selectDay')
-  }}
+  {{eui-day-selector date (action 'selectDay')}}
 {{else if (eq interval 'year')}}
-  {{eui-month-selector date
-    select-moment=(action 'selectMonth')
-  }}
+  {{eui-month-selector date (action 'selectMonth')}}
 {{else if (eq interval 'decade')}}
-  {{eui-year-selector date
-    select-moment=(action 'selectYear')
-  }}
+  {{eui-year-selector date (action 'selectYear')}}
 {{/if}}

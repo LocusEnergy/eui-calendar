@@ -26,7 +26,7 @@ const DaySelector = Ember.Component.extend({
 });
 
 DaySelector.reopenClass({
-  positionalParams: ['month', 'selection']
+  positionalParams: ['month', 'select-moment']
 });
 
 export default DaySelector;

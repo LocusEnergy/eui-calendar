@@ -63,12 +63,7 @@ test('select-day action', function(assert) {
     selectedDay = day;
   });
 
-  this.render(hbs`
-    {{eui-day-selector month
-      selection=selection
-      select-moment=(action 'selectDay')
-    }}
-  `);
+  this.render(hbs`{{eui-day-selector month (action 'selectDay')}}`);
   this.component.selectDay(DAY);
   assert.equal(selectedDay.format('YYYY-MM-DD'), '2015-08-18', 'day has been selected');
   assert.ok(this.component.isSelected(DAY), 'element has selected class');

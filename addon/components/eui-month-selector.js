@@ -22,7 +22,7 @@ const MonthSelector = Ember.Component.extend({
 });
 
 MonthSelector.reopenClass({
-  positionalParams: ['year']
+  positionalParams: ['year', 'select-moment']
 });
 
 export default MonthSelector;
