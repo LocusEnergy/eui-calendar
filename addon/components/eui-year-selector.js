@@ -12,13 +12,13 @@ const YearSelector = Ember.Component.extend({
 
   actions: {
     selectYear(year) {
-      this.sendAction('select-moment', year);
+      this.sendAction('on-select', year);
     }
   }
 });
 
 YearSelector.reopenClass({
-  positionalParams: ['decade', 'select-moment']
+  positionalParams: ['decade']
 });
 
 export default YearSelector;

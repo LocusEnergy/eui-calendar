@@ -66,7 +66,7 @@ test('select-month action', function(assert) {
     selectedMonth = month;
   });
 
-  this.render(hbs`{{eui-month-selector year (action 'selectMonth')}}`);
+  this.render(hbs`{{eui-month-selector year on-select=(action 'selectMonth')}}`);
 
   this.component.selectMonth(MONTH);
   assert.equal(selectedMonth.format('MMMM YYYY'), 'June 2015', 'month has been selected');

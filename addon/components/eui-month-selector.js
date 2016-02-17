@@ -16,13 +16,13 @@ const MonthSelector = Ember.Component.extend({
 
   actions: {
     selectMonth(month) {
-      this.sendAction('select-moment', month);
+      this.sendAction('on-select', month);
     }
   }
 });
 
 MonthSelector.reopenClass({
-  positionalParams: ['year', 'select-moment']
+  positionalParams: ['year']
 });
 
 export default MonthSelector;

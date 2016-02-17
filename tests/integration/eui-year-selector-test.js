@@ -70,7 +70,7 @@ test('select-year action', function(assert) {
   });
 
   this.render(hbs`
-    {{eui-year-selector decade (action 'selectYear')}}
+    {{eui-year-selector decade on-select=(action 'selectYear')}}
   `);
 
   this.component.selectYear(YEAR);

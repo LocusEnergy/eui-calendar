@@ -5,9 +5,9 @@
 }}
 
 {{#if (eq interval 'month')}}
-  {{eui-day-selector date (action 'selectDay')}}
+  {{eui-day-selector date on-select=(action 'selectDay')}}
 {{else if (eq interval 'year')}}
-  {{eui-month-selector date (action 'selectMonth')}}
+  {{eui-month-selector date on-select=(action 'selectMonth')}}
 {{else if (eq interval 'decade')}}
-  {{eui-year-selector date (action 'selectYear')}}
+  {{eui-year-selector date on-select=(action 'selectYear')}}
 {{/if}}
