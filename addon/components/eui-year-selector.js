@@ -2,7 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/eui-year-selector';
 import momentDecade from 'eui-calendar/utils/moment-decade';
 
-export default Ember.Component.extend({
+const YearSelector = Ember.Component.extend({
   layout,
   classNames: 'eui-year-selector',
 
@@ -16,3 +16,9 @@ export default Ember.Component.extend({
     }
   }
 });
+
+YearSelector.reopenClass({
+  positionalParams: ['decade']
+});
+
+export default YearSelector;

@@ -13,7 +13,7 @@ moduleForComponent('eui-month-selector', 'Integration | Component | Selectors | 
 });
 
 test('default behavior', function(assert) {
-  this.render(hbs`{{eui-month-selector year=year}}`);
+  this.render(hbs`{{eui-month-selector year}}`);
   assert.equal(this.component.monthCount(), 12, 'number of months in a year');
   assert.deepEqual(this.component.months(), [
     'January',
@@ -33,7 +33,7 @@ test('default behavior', function(assert) {
 
 test('yields months as block parameter', function(assert) {
   this.render(hbs`
-    {{#eui-month-selector year=year as |month|}}
+    {{#eui-month-selector year as |month|}}
       {{eui-interval
         moment=month
         interval='month'
@@ -67,8 +67,7 @@ test('select-month action', function(assert) {
   });
 
   this.render(hbs`
-    {{eui-month-selector
-      year=year
+    {{eui-month-selector year
       select-month=(action 'selectMonth')
     }}
   `);

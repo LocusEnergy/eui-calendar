@@ -13,7 +13,7 @@ moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eu
 });
 
 test('default behavior', function(assert) {
-  this.render(hbs`{{eui-day-selector month=month}}`);
+  this.render(hbs`{{eui-day-selector month}}`);
 
   assert.equal(this.component.notEmptyCount(), 31, 'Number of days in August 2015');
   assert.equal(this.component.emptyCount(), 11, 'The number of empty slots is 42 - 31');
@@ -32,10 +32,8 @@ test('default behavior', function(assert) {
 
 test('yields days as block parameter', function(assert) {
   this.render(hbs`
-    {{#eui-day-selector month=month as |day|}}
-      {{eui-interval
-        moment=day
-        interval='day'
+    {{#eui-day-selector month as |day|}}
+      {{eui-interval day 'day'
         is-disabled=(not (moment-same-month month day))
       }}
     {{/eui-day-selector}}
@@ -61,7 +59,7 @@ test('selection array used to show days as selected', function(assert){
   const DATE1 = moment('August 1, 2015');
   const DATE2 = moment('August 5, 2015');
   this.set('selection', new Ember.A([ DATE1, DATE2 ]));
-  this.render(hbs`{{eui-day-selector month=month selection=selection}}`);
+  this.render(hbs`{{eui-day-selector month selection}}`);
   assert.ok(this.component.isSelected(DATE1));
   assert.ok(this.component.isSelected(DATE2));
   assert.ok(!this.component.isSelected(moment('August 10, 2015')));
@@ -76,8 +74,7 @@ test('select-day action', function(assert) {
   });
 
   this.render(hbs`
-    {{eui-day-selector
-      month=month
+    {{eui-day-selector month
       select-day=(action 'selectDay')
     }}
   `);

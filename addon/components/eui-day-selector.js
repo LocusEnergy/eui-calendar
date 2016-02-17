@@ -6,7 +6,7 @@ import _range from 'lodash/utility/range';
 const { computed } = Ember;
 const DAY_COUNT = 42;
 
-export default Ember.Component.extend({
+const DaySelector = Ember.Component.extend({
   layout,
   classNames: 'eui-day-selector',
 
@@ -23,3 +23,9 @@ export default Ember.Component.extend({
     }
   }
 });
+
+DaySelector.reopenClass({
+  positionalParams: ['month', 'selection']
+});
+
+export default DaySelector;

@@ -3,7 +3,7 @@ import layout from '../templates/components/eui-month-selector';
 import _range from 'lodash/utility/range';
 import Moment from 'moment';
 
-export default Ember.Component.extend({
+const MonthSelector = Ember.Component.extend({
   layout,
   classNames: 'eui-month-selector',
 
@@ -20,3 +20,9 @@ export default Ember.Component.extend({
     }
   }
 });
+
+MonthSelector.reopenClass({
+  positionalParams: ['year']
+});
+
+export default MonthSelector;
