@@ -15,11 +15,21 @@ moduleForComponent('eui-interval', 'Integration | Component | eui interval', {
   }
 });
 
-test('renders days', function(assert) {
+test('renders days with moment and interval as positional arguments', function(assert) {
   this.render(hbs`{{eui-interval moment 'day'}}`);
 
   assert.equal(this.component.value(), '21', 'renders content');
   assert.equal(this.component.datetime(), this.get('datetime'), 'has data-datetime attribute');
+});
+
+test('renders moment with block param', function(assert) {
+  this.render(hbs`
+    {{#eui-interval moment}}
+      {{moment-format moment 'dddd'}}
+    {{/eui-interval}}
+  `);
+
+  assert.equal(this.component.value(), 'Tuesday', 'renders content');
 });
 
 test('renders months', function(assert) {
