@@ -6,46 +6,27 @@ const { computed } = Ember;
 
 const EUICalendar = Ember.Component.extend({
   layout,
+  classNames: ['eui-calendar'],
 
+  // default interval
   interval: 'month',
 
-  date: computed({
-    get() {
-      return Moment();
-    },
-    set(key, value) {
-      return value;
-    }
+  date: computed(function() {
+    return Moment();
   }),
 
   actions: {
-    onZoom(interval) {
-      if (interval === 'month') {
-        this.set('interval', 'year');
-      }
-
-      if (interval === 'year') {
-        this.set('interval', 'decade');
-      }
+    zoomIn(interval, date) {
+      this.setProperties({ interval, date });
     },
 
-    setDate(date) {
-      this.set('date', date);
+    zoomOut(interval) {
+      this.set('interval', interval);
     },
 
     selectDay(day) {
       this.sendAction('on-select', day);
-    },
-
-    selectMonth(month) {
-      this.send('setDate', month);
-      this.set('interval', 'month');
-    },
-
-    selectYear(year) {
-      this.send('setDate', year);
-      this.set('interval', 'year');
-    },
+    }
   }
 });
 
