@@ -11,6 +11,12 @@ moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eu
   }
 });
 
+test('should render without month passed in', function (assert) {
+  
+  this.render(hbs`{{eui-day-selector}}`);
+  assert.ok(this.$(), 'something is rendered');
+});
+
 test('default behavior', function(assert) {
   this.render(hbs`{{eui-day-selector month}}`);
 
