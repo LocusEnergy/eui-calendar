@@ -17,6 +17,22 @@ test('should render without month passed in', function (assert) {
   assert.ok(this.$(), 'something is rendered');
 });
 
+test('should default to now when null is passed in as month', function (assert){
+
+  this.render(hbs`{{eui-day-selector null}}`);
+  
+  assert.ok(this.$(), 'something is rendered');
+});
+
+test('should allow selection to be null', function(assert){
+
+  this.set('month', undefined);
+  this.set('selection', undefined);
+  this.render(hbs`{{eui-day-selector month selection=selection}}`);
+
+  assert.ok(this.component.notEmptyCount() > 27, 'should render atleast 27 days');
+});
+
 test('default behavior', function(assert) {
   this.render(hbs`{{eui-day-selector month}}`);
 
@@ -73,4 +89,15 @@ test('select-day action', function(assert) {
   this.component.selectDay(DAY);
   assert.equal(selectedDay.format('YYYY-MM-DD'), '2015-08-18', 'day has been selected');
   assert.ok(this.component.isSelected(DAY), 'element has selected class');
+});
+
+test('it should accept a selection date attribute', function(assert){
+  
+  let date = moment('March 14, 2016');
+  
+  this.set('date', date);
+  this.render(hbs`{{eui-day-selector date selection=date}}`);
+ 
+  assert.ok(this.$('.--is-selected:contains(14)').length, '14th is selected');
+ 
 });

@@ -13,15 +13,15 @@
     {{#if hasBlock}}
       {{yield day}}
     {{else}}
-      {{#if (moment-same-month month day)}}
+      {{#if (moment-same _month day 'month')}}
         {{eui-interval day 'day'
-          is-selected=(eq selection day)
+          is-selected=(moment-same selection day 'day')
           on-select=(action 'selectDay')
         }}
       {{else}}
         {{#eui-interval day 'day'
           is-empty=true
-          is-selected=(eq selection day)
+          is-selected=(moment-same selection day 'day')
         }}{{/eui-interval}}
       {{/if}}
     {{/if}}

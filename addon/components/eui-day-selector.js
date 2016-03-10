@@ -10,12 +10,14 @@ const DaySelector = Ember.Component.extend({
   layout,
   classNames: 'eui-day-selector',
   
-  month: computed(function(){
-    return Moment();
-  }),
-
-  days: computed('month', function() {
-    let monthStart = Moment(this.get('month')).startOf('month');
+  didReceiveAttrs() {
+    this._super(...arguments);
+    let month = this.get('month');
+    this.set('_month', month || Moment());
+  },
+  
+  days: computed('_month', function() {
+    let monthStart = Moment(this.get('_month')).startOf('month');
     let dayOfWeek = monthStart.day();
     let dayRange = _range((-1)*dayOfWeek, DAY_COUNT - dayOfWeek);
     return dayRange.map(d => monthStart.clone().add(d, 'days'));
