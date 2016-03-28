@@ -1,0 +1,8 @@
+{{one-way-input value=(moment-format date 'ddd MMM DD YYYY') click=(action 'open')}}
+
+{{#if isOpen}}
+  <div class="eui-pikaday--window">
+    <div class="eui-pikaday--month">{{moment-format date 'MMMM YYYY'}}</div>
+    {{eui-day-selector date selection=date}}
+  </div>
+{{/if}}
