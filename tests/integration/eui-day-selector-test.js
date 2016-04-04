@@ -12,7 +12,7 @@ moduleForComponent('eui-day-selector', 'Integration | Component | Selectors | eu
 });
 
 test('should render without month passed in', function (assert) {
-  
+
   this.render(hbs`{{eui-day-selector}}`);
   assert.ok(this.$(), 'something is rendered');
 });
@@ -20,7 +20,7 @@ test('should render without month passed in', function (assert) {
 test('should default to now when null is passed in as month', function (assert){
 
   this.render(hbs`{{eui-day-selector null}}`);
-  
+
   assert.ok(this.$(), 'something is rendered');
 });
 
@@ -55,7 +55,7 @@ test('yields days as block parameter', function(assert) {
   this.render(hbs`
     {{#eui-day-selector month as |day|}}
       {{eui-interval day 'day'
-        is-disabled=(not (moment-same-month month day))
+        is-disabled=(not (moment-same month day 'month'))
       }}
     {{/eui-day-selector}}
   `);
@@ -92,12 +92,12 @@ test('select-day action', function(assert) {
 });
 
 test('it should accept a selection date attribute', function(assert){
-  
+
   let date = moment('March 14, 2016');
-  
+
   this.set('date', date);
   this.render(hbs`{{eui-day-selector date selection=date}}`);
- 
+
   assert.ok(this.$('.--is-selected:contains(14)').length, '14th is selected');
- 
+
 });
