@@ -8,14 +8,14 @@ const EUIIntervalSelector = Ember.Component.extend({
   classNames: ['eui-interval-selector'],
   interval: 'month',
   moment: Ember.computed(function() {
-    return Moment();
+    return new Moment();
   }),
 
   name: Ember.computed('moment', 'interval', function() {
     const moment = this.get('moment');
     const interval = this.get('interval');
     if (interval === 'year') {
-      return Moment(moment).format('YYYY');
+      return new Moment(moment).format('YYYY');
     }
 
     if (interval === 'decade') {
@@ -23,7 +23,7 @@ const EUIIntervalSelector = Ember.Component.extend({
       return `${first} - ${last}`;
     }
 
-    return Moment(moment).format('MMMM YYYY');
+    return new Moment(moment).format('MMMM YYYY');
   }),
 
   _shiftMoment(direction) {
@@ -31,9 +31,9 @@ const EUIIntervalSelector = Ember.Component.extend({
     const moment = this.get('moment');
     const interval = this.get('interval');
     if (interval === 'decade') {
-      return Moment(moment).clone().add(amount * 10, 'year');
+      return new Moment(moment).clone().add(amount * 10, 'year');
     }
-    return Moment(moment).clone().add(amount, interval);
+    return new Moment(moment).clone().add(amount, interval);
   },
 
   actions: {

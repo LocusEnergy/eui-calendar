@@ -28,7 +28,7 @@ const EUIInterval = Ember.Component.extend({
   }),
 
   now: computed(function(){
-    return Moment();
+    return new Moment();
   }),
 
   'data-datetime': computed('moment', {

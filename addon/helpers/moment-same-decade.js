@@ -2,8 +2,8 @@ import Ember from 'ember';
 import Moment from 'moment';
 
 export function momentSameDecade([a, b]) {
-  const aYear = Moment(a).year();
-  const bYear = Moment(b).year();
+  const aYear = new Moment(a).year();
+  const bYear = new Moment(b).year();
   return getDecade(aYear) === getDecade(bYear);
 }
 

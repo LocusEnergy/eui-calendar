@@ -10,7 +10,7 @@ const MonthSelector = Ember.Component.extend({
   months: Ember.computed('year', function() {
     let year = this.get('year').get('year');
     // ensures that we start with the correct month in the correct year
-    let january = Moment().year(year).month(0).startOf('month');
+    let january = new Moment().year(year).month(0).startOf('month');
     return _range(12).map(m => january.clone().add(m, 'months'));
   }),
 
