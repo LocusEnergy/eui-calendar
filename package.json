@@ -1,6 +1,6 @@
 {
   "name": "eui-calendar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A composable calendar component for picking dates, based on the Ember v2.0 API. Inspired by EmberUI.com",
   "directories": {
     "doc": "doc",
@@ -26,7 +26,6 @@
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.3.1",
-    "ember-cli-moment-shim": "1.1.0",
     "ember-cli-qunit": "^1.1.0",
     "ember-cli-release": "0.2.8",
     "ember-cli-sass": "^5.2.1",
@@ -36,11 +35,7 @@
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
-    "ember-lodash": "0.0.6",
-    "ember-moment": "4.2.1",
-    "ember-one-way-controls": "0.5.3",
     "ember-resolver": "^2.0.3",
-    "ember-truth-helpers": "^1.2.0",
     "ember-try": "~0.0.8",
     "liquid-fire": "0.22.1"
   },
@@ -51,7 +46,12 @@
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
-    "ember-cli-htmlbars": "^1.0.1"
+    "ember-cli-htmlbars": "^1.0.1",
+    "ember-cli-moment-shim": "1.1.0",
+    "ember-lodash": "0.0.6",
+    "ember-moment": "4.2.1",
+    "ember-one-way-controls": "0.5.3",
+    "ember-truth-helpers": "^1.2.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
