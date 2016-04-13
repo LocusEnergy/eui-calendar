@@ -1,6 +1,6 @@
 {
   "name": "eui-calendar",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A composable calendar component for picking dates, based on the Ember v2.0 API. Inspired by EmberUI.com",
   "directories": {
     "doc": "doc",
