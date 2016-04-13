@@ -17,10 +17,10 @@ const EUIInterval = Ember.Component.extend({
   attributeBindings: ['data-datetime'],
   classNames: ['eui-interval'],
   classNameBindings: [
-    `is-selected:--is-selected`,
-    `is-disabled:--is-disabled`,
-    `is-now:--is-now`,
-    `is-empty:--is-empty`
+    'is-selected:--is-selected',
+    'is-disabled:--is-disabled',
+    'is-now:--is-now',
+    'is-empty:--is-empty'
   ],
 
   format: computed('interval', function() {
