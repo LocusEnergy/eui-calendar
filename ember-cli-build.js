@@ -5,8 +5,7 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     sassOptions: {
-      extension: 'scss',
-      includePaths: ['addon/styles/']
+      extension: 'scss'
     }
   });
 
